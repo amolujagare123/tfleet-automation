@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by tct4 on 12/14/2016.
@@ -63,6 +64,51 @@ public class Expense {
             throw new IllegalStateException("This is not a Expense page");
         }
     }
+    public void setTxtPNRNo(String PNR)
+    {
+        txtPNRNo.sendKeys(PNR);
+    }
+    public void setTxtExpenseNo(String expenseNo)
+    {
+        txtExpenseNo.sendKeys(expenseNo);
 
-    
+    }
+    public void setTxtpaidToParty(String partyName)
+    {
+        txtpaidToParty.sendKeys(partyName);
+    }
+    public void setTxtDescription(String description){txtDescription.sendKeys(description);}
+    public void setTxtAmount(String amount){txtAmount.sendKeys(amount);}
+    public void setTxtAdditionalInformation(String information){txtAdditionalInformation.sendKeys(information);}
+    /*public void setSelectDate()
+    {}
+     */
+    public void setSelectFleetNo(String fleetNo)
+    {
+        Select fleetNoCombo=new Select(selectFleetNo);
+        fleetNoCombo.selectByVisibleText(fleetNo);
+    }
+    public void setSelectExpenditureType(String expenditureType)
+    {
+        Select expenditureTypeCombo=new Select(selectExpenditureType);
+        expenditureTypeCombo.selectByVisibleText(expenditureType);
+    }
+    public void setSelectEmployee(String employeeName)
+    {
+        Select employeeNameCombo=new Select(selectEmployee);
+        employeeNameCombo.selectByVisibleText(employeeName);
+    }
+    public void setSelectPaymentMode(String paymentMode)
+    {
+        Select paymentModeCombo=new Select(selectPaymentMode);
+        paymentModeCombo.selectByVisibleText(paymentMode);
+    }
+    public void clickSave()
+    {
+        btnSave.click();
+    }
+    public void clickCancel()
+    {
+        btnCancel.click();
+    }
 }
