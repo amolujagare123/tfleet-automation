@@ -15,7 +15,7 @@ public class Employee {
     @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/a")
     WebElement Admin;
 
-    @FindBy(xpath = "html/body/div[2]/form/div[3]/div[1]/div[2]/ul/li[1]/ul/li[1]/a")
+    @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
     WebElement AddEmployee;
 
     @FindBy(xpath = "//div[@class='left_grid']/h2")

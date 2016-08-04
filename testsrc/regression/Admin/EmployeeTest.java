@@ -1,5 +1,10 @@
 package regression.Admin;
 
+import com.tfleet.pages.Menu;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
 /**
@@ -9,5 +14,16 @@ import org.testng.annotations.Listeners;
 
 public class EmployeeTest
 {
- //   System.setProperty(".reporter.config",".properties");
+    public static WebDriver driver;
+    Menu menu = new Menu(driver);
+
+    @BeforeClass
+        public static void init(){
+    }
+
+    @BeforeTest
+    public void openHomePage(){
+        driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+    }
 }
