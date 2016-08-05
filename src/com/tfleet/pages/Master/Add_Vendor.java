@@ -32,6 +32,14 @@ public class Add_Vendor {
     @FindBy(xpath=".//*[@id='MainContent_txtPrimContPerson']")
     WebElement ContactPerson;
 
+    @FindBy(xpath=".//*[@id='MainContent_btnSave']")
+    WebElement btnSave;
+
+
+    @FindBy(xpath=".//*[@id='MainContent_btnCancel']")
+    WebElement btnCancel;
+
+
     public Add_Vendor(WebDriver driver)
     {
         this.driver=driver;
@@ -42,5 +50,31 @@ public class Add_Vendor {
         }
 
     }
+    public void setTxtVendorName(String cname)
+    {
+        VendorName.sendKeys(cname);
+    }
+    public void setTxtVendorAddress(String caddress)
+    {
+        VendorAddress.sendKeys(caddress);
+    }
+    public void setTextVendorEmail(String Vemail)
+    {
+        VendorEmail.sendKeys(Vemail);
+    }
+    public void setTxtLandlineNo(String lno)
+    {
+        LandlineNo.sendKeys(lno);
+    }
+    public void setTxtConPerson(String cp)
+    {
+        ContactPerson.sendKeys(cp);
+    }
+    public void setTxtConNo(String cn)
+    {
+        ContactNo.sendKeys(cn);
+    }
+    public void clickSave(){btnSave.click();}
+    public void clickCancel(){btnCancel.click();}
 
 }

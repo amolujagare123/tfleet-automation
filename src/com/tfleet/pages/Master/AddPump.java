@@ -3,6 +3,7 @@ package com.tfleet.pages.Master;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * Created by tct4 on 8/4/2016.
@@ -11,29 +12,68 @@ public class AddPump {
 
     WebDriver driver;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='Form1']/div[3]/div[2]/div[1]//div[1]/h2")
     WebElement PgHead;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtVendor']")
     WebElement PumpName;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtAddress']")
     WebElement PumpAddress;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtEmail']")
     WebElement Email;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtLandlineNo']")
     WebElement LandlineNo;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtPrimContNo']")
     WebElement ContactNo;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='MainContent_txtPrimContPerson']")
     WebElement ContactPerson;
+
+    @FindBy(xpath=".//*[@id='MainContent_btnSave']")
+            WebElement btnSave;
+
+    @FindBy(xpath=".//*[@id='MainContent_btnCancel']")
+    WebElement btnCancel;
 
     public AddPump(WebDriver driver)
     {
         this.driver=driver;
+        PageFactory.initElements(driver,this);
+        if(!PgHead.isDisplayed())
+        {
+            throw new IllegalStateException("This is not Add Petrol pump page");
+        }
+
     }
+    public void setTxtPumpName(String pname)
+    {
+        PumpName.sendKeys(pname);
+    }
+    public void setTxtPumpAddress(String paddress)
+    {
+        PumpAddress.sendKeys(paddress);
+    }
+    public void setTextEmail(String email)
+    {
+        Email.sendKeys(email);
+    }
+    public void setTxtLandlineNo(String lno)
+    {
+        LandlineNo.sendKeys(lno);
+    }
+    public void setTxtConPerson(String cp)
+    {
+        ContactPerson.sendKeys(cp);
+    }
+    public void setTxtConNo(String cn)
+    {
+        ContactNo.sendKeys(cn);
+    }
+    public void clickSave(){btnSave.click();}
+    public void clickCancel(){btnCancel.click();}
+
 }

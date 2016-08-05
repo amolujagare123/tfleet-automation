@@ -75,7 +75,7 @@ public class Add_Company {
         PageFactory.initElements(driver,this);
         if(!compname.isDisplayed())
         {
-            throw new IllegalStateException("This is not a Add Company Page or wrong add company is opened ");
+            throw new IllegalStateException("This is not a Add Company Page ");
         }
     }
 
@@ -143,4 +143,7 @@ public class Add_Company {
     {
         ContactNo6.sendKeys(sixthcn);
     }
+
+    public void clickSave(){btnSave.click();}
+    public void clickCancel(){btnCancel.click();}
 }
