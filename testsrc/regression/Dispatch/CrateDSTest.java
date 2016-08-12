@@ -4,7 +4,7 @@ package regression.Dispatch;
 import com.tfleet.pages.DashBoard;
 import com.tfleet.pages.Dispatch.CreateDutySlip;
 import com.tfleet.pages.Dispatch.DutySlip;
-import com.tfleet.pages.LoginPage;
+import regression.LoginPage;
 import com.tfleet.pages.Menu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

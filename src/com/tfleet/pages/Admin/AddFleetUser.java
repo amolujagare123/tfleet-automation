@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * Created by Sai Ram on 04/08/2016.
@@ -30,17 +31,17 @@ public class AddFleetUser {
     WebElement Password;
 
     @FindBy(xpath = ".//*[@id='MainContent_btnSave']")
-    WebElement savebtn;
+    WebElement Savebtn;
 
-    @FindBy(xpath = ".//*[@id='MainContent_btnCancel']")
-    WebElement cancelbtn;
+    /*@FindBy(xpath = ".//*[@id='MainContent_btnCancel']")
+    WebElement Cancelbtn;*/
 
     public AddFleetUser(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
-        if (!AFUHeading.isDisplayed()
+        if (!AFUHeading.isDisplayed())
         {
-            throw new IllegalStateException("This is not Add user fleet page")
+            throw new IllegalStateException("This is not Add user fleet page");
         }
     }
     /*public void setAEHeadingText(String aeHeading)
@@ -67,6 +68,12 @@ public class AddFleetUser {
     }
     public void clickSave()
     {
-        Savebtn.Click
+        Savebtn.click();
+    }
+
+    public void setSelectEmployee(String setEmployee)
+    {
+        Select employeeCombo = new Select(Employee);
+        employeeCombo.selectByVisibleText(setEmployee);
     }
 }

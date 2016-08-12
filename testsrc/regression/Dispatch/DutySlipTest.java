@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.tfleet.pages.DashBoard;
-import com.tfleet.pages.LoginPage;
+import regression.LoginPage;
 import com.tfleet.pages.Menu;
 
 import java.text.ParseException;

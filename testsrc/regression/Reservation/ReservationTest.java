@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.tfleet.pages.DashBoard;
-import com.tfleet.pages.LoginPage;
+import regression.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.pages.Reservation.Reservation;
 
@@ -18,7 +18,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
