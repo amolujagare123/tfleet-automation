@@ -48,7 +48,7 @@ public class CrateDSTest {
      CreateDutySlip cds=DS.gotoDS("0001");
      // cds.clickFleetTypeVendor();
 
-      cds.selectFleetType("ECONOMY");
+    /*  cds.selectFleetType("ECONOMY");
         Thread.sleep(5000);
         cds.selectFleetType("TATA INDICA");
         Thread.sleep(5000);
@@ -60,7 +60,7 @@ public class CrateDSTest {
         cds.selectHr("01");
         cds.selectMin("15");
         cds.setDispatchDate("01/01/2016");
-        cds.clickSendMail();
+        cds.clickSendMail();*/
         // DutySlip DS= new DutySlip(driver);
         DS.gotoDS("0054");
      //   CreateDutySlip cds= new CreateDutySlip(driver);
