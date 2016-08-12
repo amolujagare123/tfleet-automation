@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/tfleet-automation.iml" filepath="$PROJECT_DIR$/tfleet-automation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tfleet-temp.iml" filepath="$PROJECT_DIR$/tfleet-temp.iml" />
     </modules>
   </component>
 </project>

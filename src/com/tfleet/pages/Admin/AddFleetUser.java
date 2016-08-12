@@ -38,9 +38,9 @@ public class AddFleetUser {
     public AddFleetUser(WebDriver driver){
         this.driver=driver;
         PageFactory.initElements(driver,this);
-        if (!AFUHeading.isDisplayed()
+        if (!AFUHeading.isDisplayed())
         {
-            throw new IllegalStateException("This is not Add user fleet page")
+            throw new IllegalStateException("This is not Add user fleet page");
         }
     }
     /*public void setAEHeadingText(String aeHeading)
@@ -67,6 +67,6 @@ public class AddFleetUser {
     }
     public void clickSave()
     {
-        Savebtn.Click
+        savebtn.click();
     }
 }

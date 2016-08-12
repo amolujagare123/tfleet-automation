@@ -146,6 +146,39 @@ public class Add_Company {
         btnSave.click();
     }
 
+    public String getCompanyName()
+    {
+        return CompanyName.getAttribute("value");
+    }
+    public String getCompanyAddress()
+    {
+        return CompanyAddress.getAttribute("value");
+    }
+    public String getCompanyEmail(){return CompanyEmail.getAttribute("value");}
+
+    public String getCompanyLandlineNo(){
+        return CompanyLandlineNo.getAttribute("value");
+    }
+
+    public String getPrimContactPer(){return ContactPerson1.getAttribute("value");}
+    public String getPrimContactNo1(){return ContactNo1.getAttribute("value");}
+
+    public String getSecContactPerson() {return ContactPerson2.getAttribute("value");}
+    public String getSecContactNo(){return ContactNo2.getAttribute("value");}
+
+    public String getThirdContactPerson(){return ContactNo3.getAttribute("value");}
+    public String getThirdContactNo(){return ContactNo3.getAttribute("value");}
+
+    public String getFourthContactPerson() {return ContactPerson4.getAttribute("value");}
+    public String getFourthContactNo(){return ContactNo4.getAttribute("value");}
+
+    public String getFifthContactPerson() {return ContactPerson5.getAttribute("value");}
+    public String getFifthContactNo(){return ContactNo5.getAttribute("value");}
+
+    public String getSixthContactPerson() {return ContactPerson2.getAttribute("value");}
+    public String getSixthContactNo(){return ContactNo6.getAttribute("value");}
+
+
     public void clickCancel() {
         btnCancel.click();
     }
@@ -154,6 +187,9 @@ public class Add_Company {
    {
      driver.findElement(By.xpath("//tr[td//div[text()='"+companyName+"']]//input[@src='../../Images/pencil-128.png' ]")).click();
    }
+   public void clickDelete(String compName)
+   {
+       driver.findElement(By.xpath(""));
+   }
 
-    
 }
