@@ -1,8 +1,9 @@
 package regression.Admin;
 
+import com.relevantcodes.extentreports.ExtentTest;
 import com.tfleet.pages.Admin.AddEmployee;
 import com.tfleet.pages.DashBoard;
-import regression.LoginPage;
+import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.utilities.Driver;
 import org.openqa.selenium.Alert;
@@ -19,48 +20,49 @@ import java.util.concurrent.TimeUnit;
  */
 
 
-public class AddEmployeeTest
-{
+public class AddEmployeeTest {
     WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
+
     @BeforeClass
 
-    public void init()
-    {
+    public void init() {
         driver.manage().window().maximize();
-        LoginPage loginPage =new LoginPage(driver,"http://test.tfleet.in/login.aspx");
+        LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        DashBoard dashBoard = loginPage.Login("akshay85pokley@gmail.com","tcraft123");
-        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+        DashBoard dashBoard = loginPage.Login("akshay85pokley@gmail.com", "123");
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
-    @Test
-    public void employeeTestsave()
-    {
+    @Test(dataProvider = "getdata")
+    public void employeeTestsave(String addEmployee,String contactNo,String email,String designation,String branch) {
+
+        ExtentTest test = extent.startTest
         Menu menu = new Menu(driver);
         menu.clickAddEmployee();
 
-        AddEmployee addemployee= new AddEmployee(driver);
+        AddEmployee addemployee = new AddEmployee(driver);
         addemployee.setEmpNameText("Om");
         addemployee.setContactNoText("7894561230");
         addemployee.setEmailText("om@gmail.com");
-        addemployee.setSelectBranch("PUNE");
-        addemployee.setSelectDesignation("MANAGER");
+        addemployee.setSelectBranch("pune");
+        addemployee.setSelectDesignation("Manager");
         addemployee.clickSave();
 
-        String expected ="Employee Added Successfully";
+        String expected = "Employee Added Successfully";
 
         Alert alert = driver.switchTo().alert();
         String actual = alert.getText();
+        alert.accept();
 
-        Assert.assertEquals(actual,expected,"Test Fail");
+        Assert.assertEquals(actual, expected, "Test Fail");
     }
+
     @Test
-    public void emloyeeTestcancel()
-    {
+    public void emloyeeTestcancel() {
         Menu menu = new Menu(driver);
         menu.clickAddEmployee();
 
-        AddEmployee addemployee= new AddEmployee(driver);
+        AddEmployee addemployee = new AddEmployee(driver);
         addemployee.setEmpNameText("Om");
         addemployee.setContactNoText("7894561230");
         addemployee.setEmailText("om@gmail.com");
@@ -93,7 +95,7 @@ public class AddEmployeeTest
         listexpected.add("");
 
         Assert.assertEquals(listActual,listexpected,"Test Fail");
+        driver.quit();
     }
 
-
-}
+    }

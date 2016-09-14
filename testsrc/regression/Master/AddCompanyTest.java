@@ -76,6 +76,7 @@ public class AddCompanyTest
            Alert alert = driver.switchTo().alert();
 
 
+
            String Actual = alert.getText();
 
             alert.accept();

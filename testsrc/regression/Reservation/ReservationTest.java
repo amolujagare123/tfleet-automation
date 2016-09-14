@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.tfleet.pages.DashBoard;
-import regression.LoginPage;
+import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.pages.Reservation.Reservation;
 

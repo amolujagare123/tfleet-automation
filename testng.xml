@@ -1,0 +1,13 @@
+<suite name="tfleet-automation - Project" verbose="1" >
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="AddEmployeeTest" >
+        <classes>
+            <class name="regression.Admin.AddClientsUserTest" />
+
+        </classes>
+    </test>
+
+</suite>

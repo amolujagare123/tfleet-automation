@@ -1,4 +1,4 @@
-package regression;
+package com.tfleet.pages;
 
 import com.tfleet.pages.DashBoard;
 import org.openqa.selenium.WebDriver;
