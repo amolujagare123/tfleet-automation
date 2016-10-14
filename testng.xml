@@ -1,0 +1,14 @@
+
+<suite name="TFleet - Project" verbose="1" >
+<listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+</listeners>
+<test name="Add Company Test" >
+    <classes>
+        <class name="regression.Master.AddCompanyTest" />
+
+    </classes>
+</test>
+
+</suite>

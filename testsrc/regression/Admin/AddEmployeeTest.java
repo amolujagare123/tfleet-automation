@@ -2,7 +2,7 @@ package regression.Admin;
 
 import com.tfleet.pages.Admin.AddEmployee;
 import com.tfleet.pages.DashBoard;
-import regression.LoginPage;
+import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.utilities.Driver;
 import org.openqa.selenium.Alert;
