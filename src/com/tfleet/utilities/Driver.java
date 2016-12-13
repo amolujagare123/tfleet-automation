@@ -21,7 +21,7 @@ public class Driver {
     private static Logger LOGGER = Logger.getLogger(Driver.class.getName());
     private static long timeout=10;
     public enum DriverTypes {
-        INTERNETEXPLORER,FIREFOX,CHROME,GHOST
+        INTERNETEXPLORER,FIREFOX,CHROME, Crome, GHOST
 
     }
     public static DriverTypes defaultDriver = DriverTypes.FIREFOX;
