@@ -94,6 +94,16 @@ public class Add_Package {
     {
         btnCancel.click();
     }
+    public void setAssignPkgToVendor()
+    {
+        assignPkgToVendor.click();
+
+    }
+    public void setAssignPkgToCmp()
+    {
+        assignPkgToCmp.click();
+    }
+
     public void selectFleetCategory(String fCategory)
     {
         Select fCategoryCombo=new Select(FleetCategory);

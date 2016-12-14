@@ -54,7 +54,6 @@ public class AddCompanyTest
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
-
     @Test(dataProvider = "getdata")
     public void addCompanyTest(String companyName, String companyEmail, String companyAddress, String companyLandLineNo,
                                String priContPers, String priContNo, String secContPer, String secContNo, String thirdContPer,
@@ -71,8 +70,7 @@ public class AddCompanyTest
             test.log(LogStatus.INFO, "Add company page opened");
 
             Add_Company addcompany = new Add_Company(driver);
-            test.log(LogStatus.INFO, "Add company page object created");
-
+            test.log(LogStatus.INFO, "Add company page object creayed");
             addcompany.setTxtCompName(companyName);
             test.log(LogStatus.INFO, "Comapany name set ");
             addcompany.setTextCompEmail(companyEmail);
@@ -111,7 +109,10 @@ public class AddCompanyTest
            String expected = "Company Added Successfully";
             driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
            Alert alert = driver.switchTo().alert();
-            String Actual = alert.getText();
+
+
+           String Actual = alert.getText();
+
             alert.accept();
            test.log(LogStatus.INFO, "alert displayed as " + Actual);
 

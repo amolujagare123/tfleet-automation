@@ -1,171 +1,192 @@
-package com.tfleet.pages.Reservation;
+package  com.tfleet.pages.Reservation;
 
 
-import org.joda.time.DateTime;
-import org.joda.time.Months;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+public class Reservation{
 
-/**
- * Created by vaishali on 4/19/2015.
- */
-public class Reservation {
     WebDriver driver;
-    @FindBy(id="//a[@href='NewRQ.do']")
-    WebElement lnkNewPo;
 
 
-    @FindBy(xpath = "//div[@class='left_grid']/h2")
-    WebElement poHeadingText;
+    @FindBy(xpath=".//*[@id='Form1']//div[1]/section/div//div[2]/h2")
+    WebElement ReservationHeading;
 
-    @FindBy(xpath = "//a[@href='../../Login.aspx']")
-    WebElement imgLogout;
+    @FindBy(xpath=".//*[@id='MainContent_txtPNRNo']")
+    WebElement txtPNRNo;
 
-    @FindBy(xpath = "//textarea[@id='MainContent_txtRep_Address']")
-    WebElement textAddress;
-
-
-    @FindBy(xpath = "//input[@id='MainContent_txtNameOfGuest']")
-    WebElement txtNameofGuest;
-
-    @FindBy(xpath = "//input[@id='MainContent_txtEmail']")
-    WebElement txtEmail;
-
-    @FindBy(xpath = "//input[@id='MainContent_txtMobileNo']")
-    WebElement txtMoblile;
-
-    @FindBy(xpath = "//select[@id='MainContent_ddlRentalCity']")
-    WebElement selectCity;
-
-    @FindBy(xpath = "//select[@id='MainContent_ddlFleetCategory']")
-    WebElement selectFleetCategory;
-
-
-    @FindBy(xpath = "//select[@id='MainContent_ddlFleetType']")
-    WebElement selectFleetType;
-
-    @FindBy(xpath = "//select[@id='MainContent_ddlPackage']")
-    WebElement selectPackage;
-
-    @FindBy(xpath = "//input[@id='MainContent_txtDateOfrequirement']")
+    @FindBy(xpath=".//*[@id='MainContent_txtResDate']")
     WebElement selectDate;
 
-    @FindBy(xpath = "//input[@id='MainContent_btnSave']")
+    @FindBy(xpath=".//*[@id='MainContent_ddlCompany']")
+    WebElement selectCompanyName;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtRep_Address']")
+    WebElement txtReportingAddress;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlRentalCity']")
+    WebElement selectRentalCity;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtNameOfGuest']")
+    WebElement txtNameOfGuest;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtBookedBy']")
+    WebElement txtBookedBy;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtMobileNo']")
+    WebElement txtMobileNo;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtEmail']")
+    WebElement txtEmail;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtOthrMobNo']")
+    WebElement txtOnotherMobNoForSMS;
+
+    @FindBy(xpath=".//*[@id='MainContent_ChkSMS']")
+    WebElement txtOnotherMobNoCheckSMS;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlFleetCategory']")
+    WebElement selectFleetCategory;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlFleetType']")
+    WebElement selectFleetType;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtDateOfrequirement']")
+    WebElement selectRequirementDate;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlPackage']")
+    WebElement selectPackage;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlHr']")
+    WebElement selectReportingTimeHrs;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlmin']")
+    WebElement selectReportingTimeMin;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtpackageamt']")
+    WebElement txtEstimateAmount;
+
+    @FindBy(xpath=".//*[@id='MainContent_ddlBillingMode']")
+    WebElement selectBillingMode;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtSpecialInstr']")
+    WebElement txtSpecialInstuction;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtExpDate']")
+    WebElement selectExpiryDate;
+
+    @FindBy(xpath=".//*[@id='MainContent_btnSave']")
     WebElement btnSave;
 
+    @FindBy(xpath=".//*[@id='MainContent_btnCancel']")
+    WebElement btnCancel;
 
-    public Reservation(WebDriver driver) {
+    public Reservation(WebDriver driver)
+    {
         this.driver=driver;
-        PageFactory.initElements(driver, this);
-        if(!poHeadingText.isDisplayed())
+        PageFactory.initElements(driver,this);
+        if(!ReservationHeading.isDisplayed())
         {
             throw new IllegalStateException("This is not a Reservation page");
         }
     }
-
-
-    public void setTextAddress(String address)
+    public void setTxtPNRNo(String PNRNo)
     {
-        textAddress.sendKeys(address);
+        txtPNRNo.sendKeys(PNRNo);
+    }
+    public void setTxtReportingAddress(String reportingAddress)
+    {
+        txtReportingAddress.sendKeys(reportingAddress);
+    }
+    public void setTxtBookedBy(String bookedBy)
+    {
+        txtBookedBy.sendKeys((bookedBy));
+    }
+    public void setTxtNameOfGuest(String nameOfGuest)
+    {
+        txtNameOfGuest.sendKeys(nameOfGuest);
+    }
+    public void setTxtMobileNo(String mobileNo)
+    {
+        txtMobileNo.sendKeys(mobileNo);
+    }
+    public void setTxtEmail(String mail)
+    {
+        txtEmail.sendKeys(mail);
+    }
+    public void setTxtOnotherMobNoForSMS(String mobNo)
+    {
+        txtOnotherMobNoForSMS.sendKeys(mobNo);
+    }
+    public void setTxtEstimateAmount(String amount)
+    {
+        txtEstimateAmount.sendKeys(amount);
+    }
+    public void setTxtSpecialInstuction(String instuction)
+    {
+        txtSpecialInstuction.sendKeys(instuction);
     }
 
-    public void setTxtNameofGuest(String guestName)
-    {
-        txtNameofGuest.sendKeys(guestName);
+    public void setSelectBillingMode(String billingMode) {
+        Select billingModeCombo=new Select(selectBillingMode);
+        billingModeCombo.selectByVisibleText(billingMode);
     }
-
-    public void setTxtMoblile(String moblile)
+    /*public void setSelectDate(String date)
     {
-        txtMoblile.sendKeys(moblile);
-    }
 
-    public void setTxtEmail(String email)
+    }*/
+    public void setSelectRentalCity(String rentalCity)
     {
-        txtEmail.sendKeys(email);
+        Select rentalCityCombo=new Select(selectRentalCity) ;
+        rentalCityCombo.selectByVisibleText(rentalCity);
     }
+    public void setSelectCompanyName(String companyName)
+    {
+        Select companyNameCombo=new Select(selectCompanyName);
+        companyNameCombo.selectByVisibleText(companyName);
+    }
+    public void setSelectFleetCategory(String fleetCategory)
+    {
+        Select fleetCategoryCombo=new Select(selectFleetCategory);
+        fleetCategoryCombo.selectByVisibleText(fleetCategory);
+    }
+    public void setSelectFleetType(String fleetType)
+    {
+        Select fleetTypeCombo=new Select(selectFleetType);
+                fleetTypeCombo.selectByVisibleText(fleetType);
+    }
+    /*public void setSelectRequirementDate(String requirementDate)
+    {
 
+    }*/
+    /*public void setSelectExpiryDate(String expiryDate)
+    {
+
+    }*/
+    public void setSelectPackage(String pakage)
+    {
+        Select pakageCombo=new Select(selectPackage);
+        pakageCombo.selectByVisibleText(pakage);
+    }
+    public void setSelectReportingTimeHrs(String Hrs)
+    {
+        Select hrsCombo=new Select(selectReportingTimeHrs);
+        hrsCombo.selectByVisibleText(Hrs);
+    }
+    public void setSelectReportingTimeMin(String min)
+    {
+        Select minCombo=new Select(selectReportingTimeMin);
+        minCombo.selectByVisibleText(min);
+    }
     public void clickSave()
     {
         btnSave.click();
     }
-
-
-    public void setSelectCity(String setCity)
+    public void clickCancel()
     {
-        Select cityCombo = new Select(selectCity);
-        cityCombo.selectByVisibleText(setCity);
-
-    }
-
-    public void setSelectFleetCategory(String setFleetCategory)
-    {
-        Select cityCombo = new Select(selectFleetCategory);
-        cityCombo.selectByVisibleText(setFleetCategory);
-
-    }
-    public void setSelectFleetType(String setFleetType)
-    {
-
-        Select cityCombo = new Select(selectFleetType);
-        cityCombo.selectByVisibleText(setFleetType);
-
-    }
-
-    public void setSelectPackage(String setPackage)
-    {
-
-        Select cityCombo = new Select(selectPackage);
-        cityCombo.selectByVisibleText(setPackage);
-
-    }
-
-    public void setDate(String date) throws ParseException {
-        selectDate.click();
-        SimpleDateFormat myDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat calDateFormat = new SimpleDateFormat("MMMM, yyyy");
-        Date setNewDate=myDateFormat.parse(date);
-
-        Date curDate = calDateFormat.parse(driver.findElement(By.xpath("//div[@id='MainContent_CalendarExtender2_title']")).getText());
-        // Joda org.joda.time.Months class to calculate difference
-        // to do this converted Date to joda DatTime
-        int monthDiff = Months.monthsBetween(new DateTime(curDate).withDayOfMonth(1), new DateTime(setNewDate).withDayOfMonth(1)).getMonths();
-
-        boolean isFuture = true;
-        // decided whether set date is in past or future
-        if(monthDiff<0){
-            isFuture = false;
-            monthDiff*=-1;
-        }
-        // iterate through month difference
-        for(int i=1;i<=monthDiff;i++){
-            driver.findElement(By.xpath("//div[@id='MainContent_CalendarExtender2_" + (isFuture ? "next" : "prev") + "Arrow']")).click();
-       }
-        // Click on Day of Month from table
-
-
-
-        //String dateXpath="//div[@id='MainContent_CalendarExtender2_days']/table//td/div[text()='"+new SimpleDateFormat("dd").format(setNewDate)+"' AND contains(@title,'"+ new SimpleDateFormat("MMMM").format(setNewDate)+"')]";
-        //String dateXpath= "//div[@class='ajax__calendar_body']/div[1]/table//div[text()='"+new SimpleDateFormat("dd").format(setNewDate)+"' AND contains(@title,'"+ new SimpleDateFormat("MMMM").format(setNewDate)+"')]";
-       // driver.findElement(By.xpath(dateXpath)).click();
-
-        driver.findElement(By.xpath("//div[@id='MainContent_CalendarExtender2_popupDiv']//div[text()='" + new SimpleDateFormat("dd").format(setNewDate) + "' and contains(@title,'" +
-                "" + new SimpleDateFormat("MMMM").format(setNewDate) + "')]")).click();
-
-
-    }
-
-    public static void main(String args[])
-    {
-        System.out.print("hi");
+        btnCancel.click();
     }
 }
-
-

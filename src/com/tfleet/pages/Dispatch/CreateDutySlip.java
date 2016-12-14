@@ -17,6 +17,7 @@ import java.util.Date;
  * Created by tcraft on 26/12/2015.
  */
 public class CreateDutySlip {
+
     WebDriver driver;
 
     @FindBy(xpath="//*[@id='MainContent_lblBookingNo']")
