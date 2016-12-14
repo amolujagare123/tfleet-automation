@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <suite name="tfleet-automation - Project" verbose="1" >
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
@@ -9,5 +10,19 @@
 
         </classes>
     </test>
+=======
+
+<suite name="TFleet - Project" verbose="1" >
+<listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+</listeners>
+<test name="Add Company Test" >
+    <classes>
+        <class name="regression.Master.AddCompanyTest" />
+
+    </classes>
+</test>
+>>>>>>> ba8b3e6f25a636be52c04faff6e2650607d38d40
 
 </suite>

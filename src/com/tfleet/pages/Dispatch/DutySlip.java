@@ -89,7 +89,8 @@ public class DutySlip
 
     }
 
-    public void setToDate(String date) throws ParseException {
+    public void setToDate(String date) throws ParseException
+    {
         toDate.click();
         SimpleDateFormat myDateFormat  = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat calDateFormat = new SimpleDateFormat("MMMM, yyyy");

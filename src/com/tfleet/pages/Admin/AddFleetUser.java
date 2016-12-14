@@ -54,10 +54,10 @@ public class AddFleetUser {
     {
         AFUHeading.sendKeys(afuHeading);
     }
-    public void setEmployee(String employee)
+   /* public void setEmployee(String employee)
     {
         Employee.sendKeys(employee);
-    }
+    }*/
     public void setEmail(String email)
     {
         Email.sendKeys(email);
