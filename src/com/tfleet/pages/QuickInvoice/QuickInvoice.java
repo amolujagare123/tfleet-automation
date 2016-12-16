@@ -158,12 +158,12 @@ public class QuickInvoice {
     @FindBy(xpath = "")
     WebElement
 
-    @FindBy(xpath = "")
+    /*@FindBy(xpath = "")
     WebElement btnSave;
-
-    @FindBy(xpath = "")
+*/
+  /*  @FindBy(xpath = "")
     WebElement   btnCancel;
-
+*/
 
 
 }
