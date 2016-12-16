@@ -59,10 +59,54 @@ public class MaintenanceVoucher {
         }
 
 
+            public void setSelectGarage(String garage)
+            {
+                Select garagecombo =new Select(selectGarage);
+                garagecombo.selectByVisibleText(garage);
+            }
+            public void setReceiptNo(String receiptno)
+            {
+                receiptNo.sendKeys(receiptno);
+            }
+            public void setTxtPnrNo(String pnrno)
+            {
+                txtPnrNo.sendKeys(pnrno);
+            }
             public void setSelectGarageName(String garageName)
             {
                 Select garageNamecombo =new Select(selectGarageName);
                 garageNamecombo.selectByVisibleText(garageName);
+            }
+            public void setselectVoucherType(String voucherType)
+            {
+                Select voucherTypecombo =new Select(selectVoucherType);
+                voucherTypecombo.selectByVisibleText(voucherType);
+            }
+            public void setDate(String date)
+            {
+                Select datecombo= new Select(date);
+                datecombo.selectByVisibleText(date);
+            }
+            public void setSelectModeofPayment(String modeofPayment)
+            {
+                Select  modeofPaymentcombo= new Select(selectModeofPayment);
+                modeofPaymentcombo.selectByVisibleText(modeofPayment);
+            }
+            public void setTxtPaymentDetails(String paymentDetails)
+            {
+                txtPaymentDetails.sendKeys(paymentDetails);
+            }
+            public void setTotalAmount(String totalamount)
+            {
+                totalAmount.sendKeys(totalamount);
+            }
+            public void clickSave()
+            {
+                btnSave.click();
+            }
+            public void clickCancel()
+            {
+                btnCancel.click();
             }
 
 }

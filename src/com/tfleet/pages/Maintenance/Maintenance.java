@@ -160,9 +160,9 @@ public class Maintenance {
                 Select garageNameCombo = new Select(selectGarageName);
                 garageNameCombo.selectByVisibleText(garageName);
             }
-            public void setSelectpaidChkBox(String paidchkBox)
+            public void ClickpaidChkBox()
             {
-                selectpaidChkBox.sendKeys(paidchkBox);
+               selectpaidChkBox.click();
             }
             public void setsrNo(String srno)
             {
