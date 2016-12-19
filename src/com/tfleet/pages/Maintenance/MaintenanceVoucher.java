@@ -13,40 +13,40 @@ public class MaintenanceVoucher {
 
     WebDriver driver;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='Form1']/div[3]/div[2]/div[1]/section/div/div[1]/div[1]/h2 ")
     WebElement maintenanceVoucher;        //maintenance voucher heading
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_ddlGarageNmFilter']")
     WebElement selectGarage;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtVoucherId']")
     WebElement receiptNo;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtPNRNo']")
     WebElement txtPnrNo;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_ddlGarageNm']")
     WebElement selectGarageName;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_ddlvoucherType']")
     WebElement selectVoucherType;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtDate']")
     WebElement date;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_ddlPayMode']")
     WebElement selectModeofPayment;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtCashDetails']")
     WebElement txtPaymentDetails;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtTotalAmount'] ")
     WebElement totalAmount;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_btnSave']")
     WebElement btnSave;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_btnCancel'] ")
     WebElement btnCancel;
 
 
