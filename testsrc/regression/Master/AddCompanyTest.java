@@ -50,7 +50,7 @@ public class AddCompanyTest
         driver.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        DashBoard dashBoard = loginPage.Login("akshu.pokley@gmail.com", "123");
+        DashBoard dashBoard = loginPage.Login("akshay85pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
@@ -70,7 +70,7 @@ public class AddCompanyTest
             test.log(LogStatus.INFO, "Add company page opened");
 
             Add_Company addcompany = new Add_Company(driver);
-            test.log(LogStatus.INFO, "Add company page object created");
+            test.log(LogStatus.INFO, "Add company page object creayed");
             addcompany.setTxtCompName(companyName);
             test.log(LogStatus.INFO, "Comapany name set ");
             addcompany.setTextCompEmail(companyEmail);
@@ -115,7 +115,7 @@ public class AddCompanyTest
 
             alert.accept();
            test.log(LogStatus.INFO, "alert displayed as " + Actual);
-            driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+
          try{
               Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
               test.log(LogStatus.PASS, "Company Added Successfully");

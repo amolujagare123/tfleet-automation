@@ -27,7 +27,7 @@ public class AddEmployee {
         @FindBy(xpath = "//input[@id='MainContent_txtEmployeeName']")
         WebElement EmpName;
 
-        @FindBy(xpath = "//input[@id='MainContent_ddlDesignation']")
+        @FindBy(xpath = "//select[@id='MainContent_ddlDesignation']")
         WebElement Designation;
 
         @FindBy(xpath = "//input[@id='MainContent_txtContactNo']")
@@ -36,7 +36,7 @@ public class AddEmployee {
         @FindBy(xpath = "//input[@id='MainContent_txtEmail']")
         WebElement Email;
 
-        @FindBy(xpath = "//input[@id='MainContent_ddlBranch']")
+        @FindBy(xpath = "//select[@id='MainContent_ddlBranch']")
         WebElement Branch;
 
         @FindBy(xpath = "//input[@id='MainContent_btnSave']")
@@ -69,15 +69,6 @@ public class AddEmployee {
     {
         Email.sendKeys(email);
     }
-    public void clickSave()
-    {
-        Savebtn.click();
-    }
-    public void clickCancel()
-    {
-        Cancelbtn.click();
-    }
-
     public void setSelectDesignation(String setDesignation)
     {
         Select designationCombo = new Select(Designation);
@@ -87,6 +78,14 @@ public class AddEmployee {
     {
         Select branchCombo = new Select(Branch);
         branchCombo.selectByVisibleText(setBranch);
+    }
+    public void clickSave()
+    {
+        Savebtn.click();
+    }
+    public void clickCancel()
+    {
+        Cancelbtn.click();
     }
 
 
