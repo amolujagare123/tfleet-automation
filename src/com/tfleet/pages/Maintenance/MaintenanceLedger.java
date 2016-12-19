@@ -13,28 +13,28 @@ public class MaintenanceLedger {
 
     WebDriver driver;
 
-    @FindBy(xpath = "")
-    WebElement maintenanceLedger;
+    @FindBy(xpath = ".//*[@id='Form1']/div[3]/div[2]/div[1]/section/div/div[1]/div[1]/h2")
+    WebElement maintenanceLedger;       //Maintenance Ledger Heading
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtFromDate']")
     WebElement selectFromDate;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtToDate']")
     WebElement selectToDate;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_ddlGarage']")
     WebElement selectGarage;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_txtBillNo']")
     WebElement txtMaintenanceBillNo;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_btnView']")
     WebElement btnView;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_btnCancel']")
     WebElement btnCancel;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = ".//*[@id='MainContent_btnExportToExcel']")
     WebElement btnExportToExcel;
 
     public MaintenanceLedger(WebDriver driver) {
