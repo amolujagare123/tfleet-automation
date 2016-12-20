@@ -396,12 +396,5 @@ public class QuickInvoice {
         btnReset.click();
     }
 
-
-
-
-
-
-
-
 }
 

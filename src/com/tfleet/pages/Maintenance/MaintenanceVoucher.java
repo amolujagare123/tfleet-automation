@@ -82,11 +82,11 @@ public class MaintenanceVoucher {
                 Select voucherTypecombo =new Select(selectVoucherType);
                 voucherTypecombo.selectByVisibleText(voucherType);
             }
-            public void setDate(String date)
+            /*public void setDate(String date)
             {
                 Select datecombo= new Select(date);
                 datecombo.selectByVisibleText(date);
-            }
+            }*/
             public void setSelectModeofPayment(String modeofPayment)
             {
                 Select  modeofPaymentcombo= new Select(selectModeofPayment);
