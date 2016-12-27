@@ -1,28 +1,22 @@
-<<<<<<< HEAD
-<suite name="tfleet-automation - Project" verbose="1" >
+
+<suite name="TFleet" verbose="1" >
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
-    <test name="AddEmployeeTest" >
+    <test name="1.Add Employee" >
         <classes>
-            <class name="regression.Admin.AddClientsUserTest" />
+            <class name="regression.Admin.AddEmployeeTest" />
 
         </classes>
     </test>
-=======
 
-<suite name="TFleet - Project" verbose="1" >
-<listeners>
-    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
-    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
-</listeners>
-<test name="Add Company Test" >
+    <test name="2.Add Company" >
     <classes>
         <class name="regression.Master.AddCompanyTest" />
 
     </classes>
-</test>
->>>>>>> ba8b3e6f25a636be52c04faff6e2650607d38d40
+     </test>
+
 
 </suite>

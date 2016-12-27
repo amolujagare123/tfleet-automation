@@ -72,12 +72,12 @@ public class AddEmployee {
     public void setSelectDesignation(String setDesignation)
     {
         Select designationCombo = new Select(Designation);
-        designationCombo.selectByVisibleText(setDesignation);
+        designationCombo.selectByValue(setDesignation);
     }
     public void setSelectBranch(String setBranch)
     {
         Select branchCombo = new Select(Branch);
-        branchCombo.selectByVisibleText(setBranch);
+        branchCombo.selectByValue(setBranch);
     }
     public void clickSave()
     {

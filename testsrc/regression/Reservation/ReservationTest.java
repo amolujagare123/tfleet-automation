@@ -1,3 +1,4 @@
+/*
 package regression.Reservation;
 
 import com.kirwa.nxgreport.NXGReports;
@@ -22,9 +23,11 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
+*/
 /**
  * Created by vaishali on 4/19/2015.
- */
+ *//*
+
 
 @Listeners({NXGTestListner.class})
 
@@ -94,7 +97,8 @@ catch(Throwable e)
     }
 
 
-   /* @Test
+   */
+/* @Test
     public void testAlert() {
         driver.get("file:///D:/selenium/test-project/test.html");
         System.out.println(driver.switchTo().alert().getText());
@@ -102,7 +106,8 @@ catch(Throwable e)
         String name=driver.findElement(By.id("testText")).getText();
         assertEquals(name,"Amol","Strings are not equal");
 
-    }*/
+    }*//*
+
 
     @Test
     public void testMsSql()
@@ -139,3 +144,4 @@ catch(Throwable e)
     }
 
 }
+*/

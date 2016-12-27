@@ -18,10 +18,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.UnhandledAlertException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -41,7 +38,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class AddCompanyTest
 {
- WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
+    WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
     ExtentReports extent = initExtentReport.init();
     @BeforeClass
     public void init()
@@ -50,7 +47,7 @@ public class AddCompanyTest
         driver.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        DashBoard dashBoard = loginPage.Login("akshay85pokley@gmail.com", "123");
+        DashBoard dashBoard = loginPage.Login("akshu.pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
@@ -70,7 +67,7 @@ public class AddCompanyTest
             test.log(LogStatus.INFO, "Add company page opened");
 
             Add_Company addcompany = new Add_Company(driver);
-            test.log(LogStatus.INFO, "Add company page object creayed");
+            test.log(LogStatus.INFO, "Add company page object created");
             addcompany.setTxtCompName(companyName);
             test.log(LogStatus.INFO, "Comapany name set ");
             addcompany.setTextCompEmail(companyEmail);
@@ -116,31 +113,41 @@ public class AddCompanyTest
             alert.accept();
            test.log(LogStatus.INFO, "alert displayed as " + Actual);
 
-         try{
-              Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
+
+              Assert.assertEquals(Actual.trim(), expected.trim());
               test.log(LogStatus.PASS, "Company Added Successfully");
-          }
 
-          catch (AssertionError e)
-          {
-              test.log(LogStatus.FAIL, "Add company page object created");
-              test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
-          }
 
         }
-        catch (UnhandledAlertException e)
+        catch (AssertionError e)
+        {
+            test.log(LogStatus.FAIL, e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+        }
+        catch (NoSuchElementException e)
+        {
+            test.log(LogStatus.FAIL, "Element not found : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+        }
+      /*  catch (UnhandledAlertException e)
         {
             Alert alert = driver.switchTo().alert();
             alert.accept();
-/*
+
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+*//*
             Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
             test.log(LogStatus.PASS, "Company Added Successfully");
-*/
-        }
+*//*
+        }*/
         catch(Throwable e)
        {
-           test.log(LogStatus.ERROR,"There is exception"+e);
+           test.log(LogStatus.ERROR,"There is Error : "+e);
            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
        }
 

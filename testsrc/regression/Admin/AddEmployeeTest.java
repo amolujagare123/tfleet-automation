@@ -44,7 +44,7 @@ public class AddEmployeeTest {
         driver.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        DashBoard dashBoard = loginPage.Login("akshay85pokley@gmail.com", "123");
+        DashBoard dashBoard = loginPage.Login("akshu.pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
@@ -64,6 +64,10 @@ public class AddEmployeeTest {
             addemployee.setEmpNameText(employeeName);
             test.log(LogStatus.INFO, "Employee name set");
 
+            addemployee.setSelectDesignation(designation);
+            test.log(LogStatus.INFO, "Designation set");
+
+
             addemployee.setContactNoText(contactNo);
             test.log(LogStatus.INFO, "Contact no set");
 
@@ -72,9 +76,6 @@ public class AddEmployeeTest {
 
             addemployee.setSelectBranch(branch);
             test.log(LogStatus.INFO, "Branch set");
-
-            addemployee.setSelectDesignation(designation);
-            test.log(LogStatus.INFO, "Designation set");
 
             addemployee.clickSave();
             test.log(LogStatus.INFO, "Save button click");
@@ -86,10 +87,12 @@ public class AddEmployeeTest {
             alert.accept();
             test.log(LogStatus.INFO, "alert displayed as " + Actual);
 
-            try {
+            try
+            {
                 Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
                 test.log(LogStatus.PASS, "Employee Added Successfully");
-            } catch (AssertionError e) {
+            }
+            catch (AssertionError e) {
                 test.log(LogStatus.FAIL, "Add Employee page object created");
                 test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
 
