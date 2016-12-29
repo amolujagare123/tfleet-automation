@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Add_Vendor {
     WebDriver driver;
 
-    @FindBy(xpath="")
+    @FindBy(xpath=".//*[@id='Form1']//div[1]/section/div//div[1]/h2")
     WebElement PgHead;
 
     @FindBy(xpath=".//*[@id='MainContent_txtVendor']")
@@ -50,31 +50,31 @@ public class Add_Vendor {
         }
 
     }
-    public void setTxtVendorName(String cname)
+    public void setVendorName(String vName)
     {
-        VendorName.sendKeys(cname);
+        VendorName.sendKeys(vName);
     }
-    public void setTxtVendorAddress(String caddress)
+    public void setVendorAddress(String vAddress)
     {
-        VendorAddress.sendKeys(caddress);
+        VendorAddress.sendKeys(vAddress);
     }
-    public void setTextVendorEmail(String Vemail)
+    public void setVendorEmail(String vEmail)
     {
-        VendorEmail.sendKeys(Vemail);
+        VendorEmail.sendKeys(vEmail);
     }
-    public void setTxtLandlineNo(String lno)
+    public void setLandlineNo(String vLandLineNo)
     {
-        LandlineNo.sendKeys(lno);
+        LandlineNo.sendKeys(vLandLineNo);
     }
-    public void setTxtConPerson(String cp)
+    public void setContactPerson(String vContactPerson)
     {
-        ContactPerson.sendKeys(cp);
+        ContactPerson.sendKeys(vContactPerson);
     }
-    public void setTxtConNo(String cn)
+    public void setContactNo(String vContactNo)
     {
-        ContactNo.sendKeys(cn);
+        ContactNo.sendKeys(vContactNo);
     }
-    public void clickSave(){btnSave.click();}
-    public void clickCancel(){btnCancel.click();}
+    public void clickBtnSave(){btnSave.click();}
+    public void clickBtnCancel(){btnCancel.click();}
 
 }

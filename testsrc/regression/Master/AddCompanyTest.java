@@ -55,8 +55,8 @@ public class AddCompanyTest
     public void addCompanyTest(String companyName, String companyEmail, String companyAddress, String companyLandLineNo,
                                String priContPers, String priContNo, String secContPer, String secContNo, String thirdContPer,
                                String thirdContNo, String fourthContPer, String fourthContNo,String fifthContPer, String fifthContNo,
-                               String sixthContactPer, String sixthContactNo)
-                               throws IOException {
+                               String sixthContactPer, String sixthContactNo, String expected)
+            throws IOException {
 
         ExtentTest test = extent.startTest("Test Add company | save record", "To test the save button functionality");
 
@@ -103,19 +103,19 @@ public class AddCompanyTest
             addcompany.clickSave();
             test.log(LogStatus.INFO, "save button clicked");
 
-           String expected = "Company Added Successfully";
+            //  String expected = "Company Added Successfully";
             driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
-           Alert alert = driver.switchTo().alert();
+            Alert alert = driver.switchTo().alert();
 
 
-           String Actual = alert.getText();
+            String actual = alert.getText();
 
             alert.accept();
-           test.log(LogStatus.INFO, "alert displayed as " + Actual);
+            test.log(LogStatus.INFO, "alert displayed as " + actual);
 
 
-              Assert.assertEquals(Actual.trim(), expected.trim());
-              test.log(LogStatus.PASS, "Company Added Successfully");
+            Assert.assertEquals(actual.trim(), expected.trim());
+            test.log(LogStatus.PASS, "Company Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
@@ -133,23 +133,12 @@ public class AddCompanyTest
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
         }
-      /*  catch (UnhandledAlertException e)
-        {
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
 
-            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-
-*//*
-            Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
-            test.log(LogStatus.PASS, "Company Added Successfully");
-*//*
-        }*/
         catch(Throwable e)
-       {
-           test.log(LogStatus.ERROR,"There is Error : "+e);
-           test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-       }
+        {
+            test.log(LogStatus.ERROR,"There is Error : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+        }
 
         extent.endTest(test);
         extent.flush();
@@ -157,13 +146,13 @@ public class AddCompanyTest
     @DataProvider
     public Object[][] getdata() throws IOException
     {
-        FileInputStream fileInputStream=new FileInputStream("Excelsheet/addCompanyData.xls");
+        FileInputStream fileInputStream=new FileInputStream("Excelsheet/Regression_Master.xls");
 
         HSSFWorkbook workbook=new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet=workbook.getSheet("Sheet1");
+        HSSFSheet worksheet=workbook.getSheet("AddCompanyData");
         int rowCount=worksheet.getPhysicalNumberOfRows();
-        String[][] data = new String[rowCount-1][16];
+        String[][] data = new String[rowCount-1][17];
         for(int i=1;i<rowCount;i++) {
             HSSFRow row = worksheet.getRow(i);
 
@@ -212,7 +201,7 @@ public class AddCompanyTest
 
             }else
             {
-               companyPrimContPerCell.setCellType(Cell.CELL_TYPE_STRING);
+                companyPrimContPerCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i-1][4]=companyPrimContPerCell.getStringCellValue();
             }
 
@@ -340,10 +329,18 @@ public class AddCompanyTest
                 data[i-1][15]=companySixthContNoCell.getStringCellValue();
             }
 
+            HSSFCell expectedResult=row.getCell(16);
+            if(expectedResult==null)
+            {
+                data[i-1][16]="";
+
+            }else
+            {
+                expectedResult.setCellType(Cell.CELL_TYPE_STRING);
+                data[i-1][16]=expectedResult.getStringCellValue();
+            }
+
         }
-
-
-
         return data;
     }
     /*@Test
