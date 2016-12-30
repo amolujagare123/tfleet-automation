@@ -137,12 +137,6 @@ WebElement Admin ;
     @FindBy(xpath="//*[@id='A20']")
     WebElement maintenanceVoucherReports;
 
-
-
-
-
-
-
 // Master
 
     @FindBy(xpath=".//*[@id='A28']")
@@ -163,6 +157,11 @@ WebElement Admin ;
     @FindBy(xpath="//*[@id='A45']")
     WebElement vendorPackageMaster;
 
+    @FindBy(xpath=".//*[@id='A23']")
+    WebElement Add_PetrolPump;
+
+    @FindBy(xpath = ".//*[@id='A45']")
+    WebElement Add_Garage;
 // Reports
 
     @FindBy(xpath=".//*[@id='A19']")
@@ -449,6 +448,16 @@ WebElement Admin ;
         vendorPackageMaster.click();
     }
 
+    public void clickPetrolPump()
+    {
+        Master.click();
+        Add_PetrolPump.click();
+    }
+    public void clickAddGarage()
+    {
+        Master.click();
+        Add_Garage.click();
+    }
     public void clickReports()
     {
       Reports.click();

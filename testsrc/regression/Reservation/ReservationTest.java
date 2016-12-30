@@ -1,4 +1,4 @@
-/*
+
 package regression.Reservation;
 
 import com.kirwa.nxgreport.NXGReports;
@@ -23,10 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
 
-*/
-/**
- * Created by vaishali on 4/19/2015.
- *//*
+
 
 
 @Listeners({NXGTestListner.class})
@@ -59,7 +56,7 @@ public class ReservationTest {
         NXGReports.setAuthorInfo("Amol Ujagare", "07/06/2015", "0.10");
 
         LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
-        DashBoard dashBoard = loginPage.Login("tcraft@Khushal", "tcraft123");
+        DashBoard dashBoard = loginPage.Login("akshu.pokley@gmail.com", "123");
 
          Menu menu = new Menu(driver);
         menu.clickReservation();

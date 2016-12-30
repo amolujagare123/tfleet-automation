@@ -54,23 +54,23 @@ public class Add_Garage {
     {
         GarageName.sendKeys(gname);
     }
-    public void setTxtPumpAddress(String gaddress)
+    public void setTxtGarageAddress(String gaddress)
     {
         GarageAddress.sendKeys(gaddress);
     }
-    public void setTextEmail(String email)
+    public void setTextGarageEmail(String email)
     {
         Email.sendKeys(email);
     }
-    public void setTxtLandlineNo(String lno)
+    public void setTxtGarageLandlineNo(String lno)
     {
         LandlineNo.sendKeys(lno);
     }
-    public void setTxtConPerson(String cp)
+    public void setTxtGarageConPerson(String cp)
     {
         ContactPerson.sendKeys(cp);
     }
-    public void setTxtConNo(String cn)
+    public void setTxtGarageConNo(String cn)
     {
         ContactNo.sendKeys(cn);
     }
