@@ -20,6 +20,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
@@ -42,11 +43,11 @@ public class AddEditFleetTest {
         driver.manage().window().maximize();
         LoginPage loginPage=new LoginPage(driver,"http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(30, SECONDS);
-        DashBoard dashbord=loginPage.Login("akshu.pokley","123");
+        DashBoard dashbord=loginPage.Login("akshu.pokley@gmail.com","123");
         driver.manage().timeouts().implicitlyWait(30,SECONDS);
     }
     @Test(dataProvider="getOwnFleetData")
-    public AddEditFleetTest(String fleetNo,String fleetCategory,String fleetType,
+    public void AddEditOwnFleetTest(String fleetNo,String fleetCategory,String fleetType,
         String expected)throws IOException{
         ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
         try
@@ -93,6 +94,7 @@ public class AddEditFleetTest {
         extent.endTest(test);
         extent.flush();
     }
+    @DataProvider
     public Object[][] getOwnFleetData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Master.xls");
 
@@ -144,7 +146,7 @@ public class AddEditFleetTest {
 
     }
     @Test(dataProvider="getVendorFleetData")
-    public AddEditFleetTest(String fleetNo,String fleetCategory,String fleetType,
+    public void AddEditVendorFleetTest(String fleetNo,String fleetCategory,String fleetType,
                             String selectVendorName,String expected)throws IOException{
         ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
         try
@@ -192,6 +194,7 @@ public class AddEditFleetTest {
         extent.endTest(test);
         extent.flush();
     }
+    @DataProvider
     public Object[][] getVendorFleetData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Master.xls");
 

@@ -93,10 +93,7 @@ public class Reservation{
             throw new IllegalStateException("This is not a Reservation page");
         }
     }
-    public void setTxtPNRNo(String PNRNo)
-    {
-        txtPNRNo.sendKeys(PNRNo);
-    }
+
     public void setTxtReportingAddress(String reportingAddress)
     {
         txtReportingAddress.sendKeys(reportingAddress);

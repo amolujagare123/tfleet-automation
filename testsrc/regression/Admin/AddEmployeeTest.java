@@ -15,6 +15,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -49,7 +50,8 @@ public class AddEmployeeTest {
     }
 
     @Test(dataProvider = "getdata")
-    public void employeeTestsave(String employeeName, String contactNo, String email, String designation, String branch) throws IOException {
+    public void employeeTestsave(String employeeName, String contactNo, String email, String designation,
+                                 String branch,String expected) throws IOException {
 
         ExtentTest test = extent.startTest("Test Add employee | save record", "To test the save button functionality");
         try {
@@ -80,34 +82,46 @@ public class AddEmployeeTest {
             addemployee.clickSave();
             test.log(LogStatus.INFO, "Save button click");
 
-            String expected = "Employee Added Successfully";
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
             Alert alert = driver.switchTo().alert();
-            String Actual = alert.getText();
-            alert.accept();
-            test.log(LogStatus.INFO, "alert displayed as " + Actual);
 
-            try
-            {
-                Assert.assertEquals(Actual.trim(), expected.trim(), "Test fail");
-                test.log(LogStatus.PASS, "Employee Added Successfully");
-            }
-            catch (AssertionError e) {
-                test.log(LogStatus.FAIL, "Add Employee page object created");
-                test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
 
-            }
-        } catch (UnhandledAlertException e) {
-            Alert alert = driver.switchTo().alert();
+            String actual = alert.getText();
+
             alert.accept();
-        } catch (Throwable e) {
-            test.log(LogStatus.ERROR, "There is exception" + e);
-            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
+            test.log(LogStatus.INFO, "alert displayed as " + actual);
+
+
+            Assert.assertEquals(actual.trim(), expected.trim());
+            test.log(LogStatus.PASS, "Employee Added Successfully");
+
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+
+        }
+        catch (AssertionError e)
+        {
+            test.log(LogStatus.FAIL, e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+        }
+        catch (NoSuchElementException e)
+        {
+            test.log(LogStatus.FAIL, "Element not found : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
+        }
+
+        catch(Throwable e)
+        {
+            test.log(LogStatus.ERROR,"There is Error : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
         }
 
         extent.endTest(test);
         extent.flush();
     }
+
 
 
     @DataProvider
@@ -119,7 +133,7 @@ public class AddEmployeeTest {
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet Worksheet = workbook.getSheet("sheet1");
         int rowCount = Worksheet.getPhysicalNumberOfRows();
-        String[][] data = new String[rowCount - 1][5];
+        String[][] data = new String[rowCount - 1][6];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = Worksheet.getRow(i);
 
@@ -162,6 +176,14 @@ public class AddEmployeeTest {
                 BranchCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][4] = BranchCell.getStringCellValue();
             }
+            HSSFCell expectedResultCell = row.getCell(5);
+            if (expectedResultCell == null) {
+                data[i - 1][5] = "";
+            } else {
+                expectedResultCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][5] = expectedResultCell.getStringCellValue();
+            }
+
 
 
         }

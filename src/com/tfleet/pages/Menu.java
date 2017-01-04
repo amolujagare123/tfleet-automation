@@ -36,7 +36,7 @@ WebElement Admin ;
 
 // Resevation
 
-    @FindBy(xpath="//*[@id='your-object']/div[2]/ul/li[2]/a")
+    @FindBy(xpath=".//*[@id='your-object']/div[2]/ul/li[2]/a")
     WebElement ReservationLnk;
 
 // Dispatch
@@ -151,7 +151,7 @@ WebElement Admin ;
     @FindBy(xpath="//*[text()='Add/Edit Fleet']")
     WebElement addeditFleet;
 
-    @FindBy(xpath="//*[text()='Package']")
+    @FindBy(xpath=".//*[@id='A31']")
     WebElement masterPackage ;
 
     @FindBy(xpath="//*[@id='A45']")
@@ -208,10 +208,6 @@ WebElement Admin ;
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
-
-
-
-
     public void clickAddEmployee()
     {
         Admin.click();
