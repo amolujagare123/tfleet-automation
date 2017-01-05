@@ -1,22 +1,17 @@
 
-<suite name="TFleet" verbose="1" >
+<suite name="TFleet" verbose="2" >
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"/>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
-    <test name="1.Add Employee" >
+    <test name="1.Reservation" >
         <classes>
-            <class name="regression.Admin.AddEmployeeTest" />
+            <class name="regression.Reservation.ReservationTest" />
+
 
         </classes>
     </test>
 
-    <test name="2.Add Company" >
-    <classes>
-        <class name="regression.Master.AddCompanyTest" />
-
-    </classes>
-     </test>
 
 
 </suite>

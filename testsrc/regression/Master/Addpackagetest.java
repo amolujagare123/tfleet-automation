@@ -32,7 +32,8 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  * Created by tct4 on 9/21/2016.
  */
-public class Addpackagetest {
+public class Addpackagetest
+{
     WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
     ExtentReports extent = initExtentReport.init();
 
@@ -52,6 +53,7 @@ public class Addpackagetest {
         try {
             Menu menu = new Menu(driver);
             menu.clickPackage();
+
             Add_Package addPackage = new Add_Package(driver);
             addPackage.setPkgName(pkgName);
             addPackage.setPkgAmnt(pkgAmt);

@@ -54,8 +54,8 @@ public class AddPumpTest {
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
     }
-    @Test(dataProvider = "getData")
-    public void addVendorTest(String pumpName, String pumpAddress, String pumpEmail,String pumpLandLineNo,
+    @Test(dataProvider = "getData",alwaysRun = true)
+    public void addPumpTest(String pumpName, String pumpAddress, String pumpEmail,String pumpLandLineNo,
                               String pumpContactNo,String pumpContactPerson,String expected)throws IOException
     {
         ExtentTest test= extent.startTest("Test Add Pump","To check functionality of Save button");

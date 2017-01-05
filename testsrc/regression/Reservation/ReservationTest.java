@@ -1,144 +1,131 @@
-
 package regression.Reservation;
 
-import com.kirwa.nxgreport.NXGReports;
-import com.kirwa.nxgreport.listners.NXGTestListner;
-import com.kirwa.nxgreport.logging.LogAs;
-import com.kirwa.nxgreport.selenium.reports.CaptureScreen;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import com.tfleet.pages.DashBoard;
 import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.pages.Reservation.Reservation;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import java.io.FileInputStream;
+import java.io.IOException;
 
-
-
-
-@Listeners({NXGTestListner.class})
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ReservationTest {
-
-    {
-        System.setProperty("KIRWA.reporter.config", "KIRWA.properties");
-    }
-
-
-    public static WebDriver driver;
+    WebDriver driver;
 
     @BeforeClass
-    public static void init() {
-        System.setProperty("webdriver.chrome.driver", "E:\\Amol\\Tfleet-Activities\\automation\\tfleet\\chromedriver\\chromedriver.exe");
+    public void init() {
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         driver = new ChromeDriver();
-
-        NXGReports.setWebDriver(driver);
-
+        LoginPage loginpage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        DashBoard dashboard = loginpage.Login("akshu.pokley@gmail.com", "123");
+        driver.manage().timeouts().implicitlyWait(30, SECONDS);
+
+        driver.manage().timeouts().implicitlyWait(40, SECONDS);
 
     }
 
-
-
-    @Test
-    public void Check_NewReservation() throws Throwable {
-        NXGReports.setAuthorInfo("Amol Ujagare", "07/06/2015", "0.10");
-
-        LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
-        DashBoard dashBoard = loginPage.Login("akshu.pokley@gmail.com", "123");
-
-         Menu menu = new Menu(driver);
-        menu.clickReservation();
-        Reservation reservation = new Reservation(driver);
-        reservation.setTextAddress("Katraj,pune");
-        reservation.setSelectCity("pune");
-        reservation.setTxtNameofGuest("Amol");
-        reservation.setTxtMoblile("9975709708");
-        reservation.setTxtEmail("amolujagare@gmail.com");
-        reservation.setSelectFleetCategory("ECONOMY");
-        // driver.manage().timeouts().pageLoadTimeout(20,TimeUnit.SECONDS);
-        Thread.sleep(5000);
-        reservation.setSelectFleetType("TATA INDICA");
-        Thread.sleep(5000);
-        reservation.setSelectPackage("8 hr 80 km");
-
-        reservation.setDate("23/12/2015");
-        reservation.clickSave();
-        String alertText=driver.switchTo().alert().getText();
-        driver.switchTo().alert().accept();
-
-try {
-    assertEquals("Reservation Added Successfully1", alertText, "Reservation Unsuccessful");
-    NXGReports.addStep("to test reservation page", "Reservation should be added", "Reservation is added", LogAs.PASSED, new CaptureScreen(CaptureScreen.ScreenshotOf.DESKTOP));
-
-}
-catch(Throwable e)
-{
-    NXGReports.addStep("to test reservation page", "Reservation should be added", e.getMessage(), LogAs.FAILED, new CaptureScreen(CaptureScreen.ScreenshotOf.DESKTOP));
- throw e;
-}
-
-
-        //driver.close();
-    }
-
-
-   */
-/* @Test
-    public void testAlert() {
-        driver.get("file:///D:/selenium/test-project/test.html");
-        System.out.println(driver.switchTo().alert().getText());
-        driver.switchTo().alert().accept();
-        String name=driver.findElement(By.id("testText")).getText();
-        assertEquals(name,"Amol","Strings are not equal");
-
-    }*//*
-
-
-    @Test
-    public void testMsSql()
-    {
-        // Create a variable for the connection string.
-        String connectionUrl = "jdbc:sqlserver://red.mysitehosted.com:1433;" +
-                "databaseName=T_FLEET;user=tcraft;password=tcraft123";
-
-        // Declare the JDBC objects.
-        Connection con = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+    @Test(dataProvider = "getReservationData")
+    public void reservationTest(String date, String companyName, String reportingAddress, String rentalCity,
+                                String nameOfGuest, String bookedBy, String mobileNo, String email, String otherMobNoForSMS,
+                                String fleetCategory, String fleetType, String dateOfRequirement, String selectPackage,
+                                String reportingTimeHr, String reportingTimeMin, String estimateAmount, String billingMode,
+                                String specialInstruction, String expiryDate, String expected) throws IOException {
 
         try {
-            // Establish the connection.
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection(connectionUrl);
 
-            // Create and execute an SQL statement that returns some data.
-            String SQL = "SELECT  * FROM FL_RESERVATION where Rep_Guest='Amol'";
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(SQL);
 
-            // Iterate through the data in the result set and display it.
-            while (rs.next()) {
-                System.out.println(rs.getString("PNR_No") + " " + rs.getString("Rep_Guest"));
-            }
-        }
+            Menu menu = new Menu(driver);
+            menu.clickReservation();
+            Reservation reservation = new Reservation(driver);
 
-        // Handle any errors that may have occurred.
-        catch (Exception e) {
-            e.printStackTrace();
+            reservation.setSelectCompanyName(companyName);
+            reservation.setTxtReportingAddress(reportingAddress);
+            reservation.setSelectRentalCity(rentalCity);
+            reservation.setTxtNameOfGuest(nameOfGuest);
+            reservation.setTxtBookedBy(bookedBy);
+            reservation.setTxtMobileNo(mobileNo);
+            reservation.setTxtEmail(email);
+            reservation.setTxtOnotherMobNoForSMS(otherMobNoForSMS);
+            reservation.setSelectFleetCategory(fleetCategory);
+            reservation.setSelectFleetType(fleetType);
+            reservation.setSelectPackage(selectPackage);
+            reservation.setSelectReportingTimeHrs(reportingTimeHr);
+            reservation.setSelectReportingTimeMin(reportingTimeMin);
+            reservation.setTxtEstimateAmount(estimateAmount);
+            reservation.setSelectBillingMode(billingMode);
+            reservation.setTxtSpecialInstuction(specialInstruction);
+            reservation.clickSave();
+            driver.manage().timeouts().implicitlyWait(30, SECONDS);
+            Alert alert = driver.switchTo().alert();
+            String actual = alert.getText();
+            alert.accept();
+            Assert.assertEquals(actual.trim(), expected.trim());
+
+        } catch (Throwable e) {
+            System.out.print("there is an error" + e);
         }
     }
 
+    @DataProvider
+    public Object[][] getReservationData() throws IOException {
+
+        FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Reservation.xls");
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
+        HSSFSheet sheet = hssfWorkbook.getSheet("Resevation");
+        int rowCount = sheet.getPhysicalNumberOfRows();
+
+        String[][] data = new String[rowCount - 1][22];
+        for (int i = 1; i < rowCount; i++) {
+            HSSFRow row = sheet.getRow(i);
+
+
+            HSSFCell reservationDateCell = row.getCell(0);
+            if (reservationDateCell == null) {
+                data[i - 1][0] = "";
+            } else {
+                reservationDateCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][0] = reservationDateCell.getStringCellValue();
+            }
+            HSSFCell companyNameCell = row.getCell(1);
+            if (companyNameCell == null) {
+                data[i - 1][1] = "";
+            } else {
+                companyNameCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][1] = companyNameCell.getStringCellValue();
+            }
+            HSSFCell reportingAddressCell = row.getCell(2);
+            if (reportingAddressCell == null) {
+                data[i - 1][2] = "";
+            } else {
+                reportingAddressCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][2] = reportingAddressCell.getStringCellValue();
+            }
+            HSSFCell rentalCityCell = row.getCell(3);
+            if (rentalCityCell == null) {
+                data[i - 1][3] = "";
+            } else {
+                rentalCityCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][3] = rentalCityCell.getStringCellValue();
+            }
+
+        }
+
+        return data;
+    }
+
 }
-*/
