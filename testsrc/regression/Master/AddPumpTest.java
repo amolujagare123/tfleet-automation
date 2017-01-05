@@ -19,6 +19,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -45,6 +46,7 @@ public class AddPumpTest {
     ExtentReports extent= initExtentReport.init();
 
     @BeforeClass
+
     public void init()
     {
         driver.manage().window().maximize();
@@ -54,7 +56,7 @@ public class AddPumpTest {
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
 
     }
-    @Test(dataProvider = "getData",alwaysRun = true)
+    @Test(dataProvider = "getData")
     public void addPumpTest(String pumpName, String pumpAddress, String pumpEmail,String pumpLandLineNo,
                               String pumpContactNo,String pumpContactPerson,String expected)throws IOException
     {

@@ -1,3 +1,3 @@
-ReservationDate	CompanyName	ReportingAddress	RentalCity
-	Tcraft	Pune	Pune
-	ABB	Nasik	Nasik
+ReservationDate	CompanyName	ReportingAddress	RentalCity	NameOf Guest	BookedBY	MobileNo	Email	OtherMobNoForSMS	leetCategory	FleetType	DateOfRequirement	SelectPackage	Reporting timeHr	ReportingTimeMin	EstimateAmount	BillingMode	SpecialInstruction	ExpiryDate	ExpectedResult
+	Tcraft	Pune	Pune																
+	ABB	Nasik	Nasik																

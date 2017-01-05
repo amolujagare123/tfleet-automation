@@ -1,5 +1,6 @@
 package com.tfleet.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ public class Menu
     WebDriver driver;
 
 // Admin
-    @FindBy(xpath=".//*[@id='your-object']/div[2]/ul/li[1]/a")
+    @FindBy(xpath="//*[ text()='Admin']")
 WebElement Admin ;
 
     @FindBy(xpath="//*[text()='Add Employee']")
@@ -36,7 +37,7 @@ WebElement Admin ;
 
 // Resevation
 
-    @FindBy(xpath=".//*[@id='your-object']/div[2]/ul/li[2]/a")
+    @FindBy(xpath="//*[ text()='Reservation']")
     WebElement ReservationLnk;
 
 // Dispatch
