@@ -17,6 +17,7 @@ import org.testng.annotations.DataProvider;
 //import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -65,13 +66,9 @@ public class AddClientsUserTest {
             test.log(LogStatus.INFO, "Save button clicked");
 
 
+        } catch (NoSuchElementException e) {
+
         }
-
-
     }
-    @DataProvider
-    public Object[][] getdata()
-    {
 
-    }
 }

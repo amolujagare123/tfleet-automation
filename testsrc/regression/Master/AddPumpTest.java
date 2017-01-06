@@ -46,7 +46,6 @@ public class AddPumpTest {
     ExtentReports extent= initExtentReport.init();
 
     @BeforeClass
-
     public void init()
     {
         driver.manage().window().maximize();
@@ -66,7 +65,8 @@ public class AddPumpTest {
             Menu menu=new Menu(driver);
             driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
             menu.clickPetrolPump();
-            driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             AddPump pump=new AddPump(driver);
             pump.setTxtPumpName(pumpName);
             pump.setTxtPumpAddress(pumpAddress);
@@ -116,7 +116,7 @@ public class AddPumpTest {
 
         HSSFWorkbook workbook=new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet=workbook.getSheet("AddPumpData");
+        HSSFSheet worksheet=workbook.getSheet("AddPetrolPump");
         int rowCount=worksheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount-1][7];
         for(int i=1;i<rowCount;i++) {
