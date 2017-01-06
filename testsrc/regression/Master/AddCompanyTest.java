@@ -63,12 +63,16 @@ public class AddCompanyTest
 
             Add_Company addcompany = new Add_Company(driver);
             test.log(LogStatus.INFO, "Add company page object created");
+
             addcompany.setTxtCompName(companyName);
             test.log(LogStatus.INFO, "Comapany name set ");
+
             addcompany.setTextCompEmail(companyEmail);
             test.log(LogStatus.INFO, "Comapany Email set ");
+
             addcompany.setTxtCompAddress(companyAddress);
             test.log(LogStatus.INFO, "Comapany Address set ");
+
             addcompany.setTxtLandlineNo(companyLandLineNo);
             test.log(LogStatus.INFO, "Comapany Landline no set ");
             addcompany.setTxtPrimConPerson(priContPers);
