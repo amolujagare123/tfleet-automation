@@ -74,6 +74,9 @@ public class SMSCreadit {
     {
         Amount.sendKeys(amount);
     }
-
+    public void clickSave()
+    {
+        SaveBtn.click();
+    }
 
 }

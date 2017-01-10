@@ -1,10 +1,9 @@
 package regression.Admin;
 
-
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import com.tfleet.pages.Admin.ChangePassword;
+import com.tfleet.pages.Admin.FleetAverage;
 import com.tfleet.pages.DashBoard;
 import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
@@ -30,15 +29,15 @@ import java.util.concurrent.TimeUnit;
 import static com.tfleet.utilities.TakeScreenshot.takeScreenshot;
 
 /**
- * Created by Sai Ram on 09/08/2016.
+ * Created by SAI RAM on 1/9/2017.
  */
-public class ChangePasswordTest {
+public class fleetAvgTest {
+
 
     WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
     ExtentReports extent = initExtentReport.init();
 
     @BeforeClass
-
     public void init() {
         driver.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
@@ -48,32 +47,24 @@ public class ChangePasswordTest {
     }
 
     @Test(dataProvider = "getdata")
-    public void changePasswordTest(String userName, String oldPassword, String newPassword, String expected)
+    public void fleetAverage(String fleetNo, String fletAverage, String expected)
             throws IOException {
 
-        ExtentTest test = extent.startTest("Test Change Password | save record", "To test the save button functionality");
-
+        ExtentTest test = extent.startTest("Test Add company | save record", "To test the save button functionality");
         try {
             Menu menu = new Menu(driver);
             test.log(LogStatus.INFO, "Menu Driver initialised");
+            menu.clickFleetAverage();
+            test.log(LogStatus.INFO, "Fleet Average page opened");
 
-            menu.clickChangePassword();
-            test.log(LogStatus.INFO, "ChangePassword Page opened");
+            FleetAverage fleetAverage = new FleetAverage(driver);
+            test.log(LogStatus.INFO, "FleetAverage page object created");
 
-            ChangePassword changePassword = new ChangePassword(driver);
-            test.log(LogStatus.INFO, "Change Password page object created");
+            fleetAverage.setselectFleetNo(fleetNo);
+            test.log(LogStatus.INFO, "Fleet No select");
 
-            changePassword.setUserName(userName);
-            test.log(LogStatus.INFO, "User Name Set");
-
-            changePassword.setOldPassword((oldPassword));
-            test.log(LogStatus.INFO, "Old Password");
-
-            changePassword.setNewPassword(newPassword);
-            test.log(LogStatus.INFO, "new password set");
-
-            changePassword.ClickChangePassword();
-            test.log(LogStatus.INFO, "Change password button clicked");
+            fleetAverage.setFleetAverageLnk(fletAverage);
+            test.log(LogStatus.INFO, "save button clicked");
 
 
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -87,7 +78,7 @@ public class ChangePasswordTest {
 
 
             Assert.assertEquals(actual.trim(), expected.trim());
-            test.log(LogStatus.PASS, "Company Added Successfully");
+            test.log(LogStatus.PASS, "fleet Average done successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
 
@@ -109,47 +100,46 @@ public class ChangePasswordTest {
         extent.flush();
     }
 
-
     @DataProvider
     public Object[][] getdata() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Master.xls");
 
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet = workbook.getSheet("ChangePassword");
+        HSSFSheet worksheet = workbook.getSheet("Fleetverage");
         int rowCount = worksheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount - 1][3];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = worksheet.getRow(i);
 
-            HSSFCell userNameCell = row.getCell(0);
-            if (userNameCell == null) {
+            HSSFCell fleetNoCell = row.getCell(0);
+            if (fleetNoCell == null) {
                 data[i - 1][0] = "";
             } else {
-                userNameCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][0] = userNameCell.getStringCellValue();
+                fleetNoCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][0] = fleetNoCell.getStringCellValue();
             }
 
-            HSSFCell oldPasswordCell = row.getCell(1);
-            if (oldPasswordCell == null) {
+            HSSFCell averageCell = row.getCell(1);
+            if (averageCell == null) {
                 data[i - 1][1] = "";
             } else {
-                oldPasswordCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][1] = oldPasswordCell.getStringCellValue();
+                averageCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][1] = averageCell.getStringCellValue();
             }
 
-            HSSFCell newPasswordCell = row.getCell(2);
-            if (newPasswordCell == null) {
+            HSSFCell expectedResult = row.getCell(2);
+            if (expectedResult == null) {
                 data[i - 1][2] = "";
+
             } else {
-                newPasswordCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][2] = newPasswordCell.getStringCellValue();
+                expectedResult.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][2] = expectedResult.getStringCellValue();
             }
 
 
         }
-
         return data;
-    }
 
+    }
 }

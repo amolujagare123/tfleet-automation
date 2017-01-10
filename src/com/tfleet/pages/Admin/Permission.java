@@ -30,8 +30,7 @@ public class Permission {
     @FindBy(xpath = ".//*[@id='MainContent_HplAddFleetUser']/h6")
     WebElement AddUserLnk;
 
-    @FindBy(xpath = ".//*[@id='MainContent_btnSave']")
-    WebElement SaveBtn;
+
 
    /* @FindBy(xpath = ".//*[@id='MainContent_btnCancel']")
     WebElement CancelBtn;*/
@@ -66,9 +65,9 @@ public class Permission {
         employeeNameCombo.selectByVisibleText(setEmployeeName);
     }
 
-    public void setSelectAllBtn(String selectAllBtn)
+    public void clickSelectAllBtn()
     {
-        SelectAllBtn.sendKeys(selectAllBtn);
+        SelectAllBtn.click();
     }
 
     public void setAddUserLnk(String addUserLnk)
@@ -76,10 +75,10 @@ public class Permission {
         AddUserLnk.sendKeys(addUserLnk);
     }
 
-    public void clickSave()
+    /*public void clickSave()
     {
         SaveBtn.click();
-    }
+    }*/
 
    /* public void clickCancel()
     {

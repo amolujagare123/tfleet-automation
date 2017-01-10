@@ -50,7 +50,7 @@ public class FleetAverage {
             FleetAverageHeading.sendKeys(fleetAverageHeading);
         }
 
-        public void setFleetNo(String setFleetNo)
+        public void setselectFleetNo(String setFleetNo)
         {
             Select fleetNoCombo = new Select(FleetNo);
             fleetNoCombo.selectByVisibleText(setFleetNo);

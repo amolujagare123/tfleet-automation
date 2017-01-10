@@ -35,6 +35,7 @@ public class AddCompanyTest
 {
     WebDriver driver = Driver.getDriver(Driver.DriverTypes.CHROME);
     ExtentReports extent = initExtentReport.init();
+
     @BeforeClass
     public void init()
     {

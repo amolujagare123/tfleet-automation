@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by TCT on 24-12-15.
  */
@@ -24,16 +26,23 @@ WebElement Admin ;
     WebElement addFleetUser ;
 
     @FindBy(xpath="//*[ text()='Permission']")
-    WebElement adminPermission ;
+    WebElement Permission ;
 
-    @FindBy(xpath="//*[text()='Email'][@id='A3']")
-    WebElement adminEmail ;
+    @FindBy(xpath=".//*[@id='A3']")
+    WebElement Email ;
 
-    @FindBy(xpath="//.//*[@id='A4']")
+    @FindBy(xpath=".//*[@id='A4']")
     WebElement addClientUser ;
 
     @FindBy(xpath=".//*[@id='A43']")
     WebElement changeAdminPassword ;
+
+    @FindBy(xpath= ".//*[@id='A51']")
+    WebElement FleetAverage;
+
+    @FindBy(xpath = ".//*[@id='A56']")
+    WebElement SMSCredit;
+
 
 // Resevation
 
@@ -163,6 +172,8 @@ WebElement Admin ;
 
     @FindBy(xpath = ".//*[@id='A45']")
     WebElement Add_Garage;
+
+
 // Reports
 
     @FindBy(xpath=".//*[@id='A19']")
@@ -209,6 +220,9 @@ WebElement Admin ;
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
+
+    //Admin
+
     public void clickAddEmployee()
     {
         Admin.click();
@@ -221,16 +235,22 @@ WebElement Admin ;
         addFleetUser.click();
     }
 
-    public void clickAdminPermission()
+    public void clickPermission()
     {
         Admin.click();
-        adminPermission.click();
+        Permission.click();
     }
 
     public void clickEmail()
     {
         Admin.click();
-        adminEmail.click();
+        Email.click();
+    }
+    public void clickFleetAverage()
+    {
+        Admin.click();
+        //driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+        FleetAverage.click();
     }
 
     public void clickAddClientUser()
@@ -245,6 +265,13 @@ WebElement Admin ;
         changeAdminPassword.click();
     }
 
+    public void clickSMSCredit()
+    {
+        Admin.click();
+        SMSCredit.click();
+    }
+
+//Reservation
 
     public  void clickReservation()
     {
@@ -312,7 +339,10 @@ WebElement Admin ;
         billingLedger.click();
     }
 
+    //QuickInvoice
+
     public void clickQuickInvoice()
+
     {
         quickInvoice.click();
     }
