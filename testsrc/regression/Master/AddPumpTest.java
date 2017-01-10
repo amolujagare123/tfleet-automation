@@ -57,7 +57,7 @@ public class AddPumpTest {
     }
     @Test(dataProvider = "getData")
     public void addPumpTest(String pumpName, String pumpAddress, String pumpEmail,String pumpLandLineNo,
-                              String pumpContactNo,String pumpContactPerson,String expected)throws IOException
+                            String pumpContactNo,String pumpContactPerson,String expected)throws IOException
     {
         ExtentTest test= extent.startTest("Test Add Pump","To check functionality of Save button");
         try
@@ -126,7 +126,7 @@ public class AddPumpTest {
             if (pumpNameCell == null) {
                 data[i - 1][0] = "";
             } else {
-               pumpNameCell.setCellType(Cell.CELL_TYPE_STRING);
+                pumpNameCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][0] = pumpNameCell.getStringCellValue();
             }
 

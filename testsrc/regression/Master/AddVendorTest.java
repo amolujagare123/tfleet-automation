@@ -81,7 +81,6 @@ public class AddVendorTest {
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
-
         }
         catch (AssertionError e)
         {
