@@ -68,12 +68,10 @@ public class QuickInvoiceTest {
             test.log(LogStatus.INFO, "Reporting address set");
 
             quickInvoice.setSelectRentalCity(rentalCity);
-            test.log(LogStatus.INFO,"Rental City Select");
+            test.log(LogStatus.INFO, "Rental City Select");
 
 
-
+        } catch (AssertionError e) {
         }
-
-
     }
 }

@@ -54,7 +54,7 @@ public class fleetAvgTest {
         try {
             Menu menu = new Menu(driver);
             test.log(LogStatus.INFO, "Menu Driver initialised");
-            menu.clickFleetAverage();
+          //  menu.clickFleetAverage();
             test.log(LogStatus.INFO, "Fleet Average page opened");
 
             FleetAverage fleetAverage = new FleetAverage(driver);

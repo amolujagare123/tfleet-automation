@@ -52,7 +52,7 @@ public class PermissionTest {
             try {
                 Menu menu = new Menu(driver);
                 test.log(LogStatus.INFO, "Menu Driver initialised");
-                menu.clickPermission();
+             //   menu.clickPermission();
                 test.log(LogStatus.INFO, "Permission page opened");
 
                 Permission permission = new Permission(driver);

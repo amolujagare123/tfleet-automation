@@ -55,7 +55,7 @@ public class SMScreadittest {
         try {
             Menu menu = new Menu(driver);
             test.log(LogStatus.INFO, "Menu Driver initialised");
-            menu.clickSMSCredit();
+           // menu.clickSMSCredit();
             test.log(LogStatus.INFO, "SMS Credit page opened");
 
             SMSCreadit smsCredit = new SMSCreadit(driver);

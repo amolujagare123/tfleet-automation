@@ -66,12 +66,12 @@ public class AddClientsUserTest {
 
 
         }
+        catch(AssertionError e)
+        {
+        }
+
 
 
     }
-    @DataProvider
-    public Object[][] getdata()
-    {
 
-    }
 }

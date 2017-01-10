@@ -128,7 +128,7 @@ public class AddGarageTest {
             if (garageNameCell == null) {
                 data[i - 1][0] = "";
             } else {
-               garageNameCell.setCellType(Cell.CELL_TYPE_STRING);
+                garageNameCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][0] = garageNameCell.getStringCellValue();
             }
 

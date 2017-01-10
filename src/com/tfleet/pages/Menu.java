@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Created by TCT on 24-12-15.
  */
@@ -15,9 +13,9 @@ public class Menu
 {
     WebDriver driver;
 
-// Admin
+    // Admin
     @FindBy(xpath="//*[ text()='Admin']")
-WebElement Admin ;
+    WebElement Admin ;
 
     @FindBy(xpath="//*[text()='Add Employee']")
     WebElement addEmployee ;
@@ -26,27 +24,20 @@ WebElement Admin ;
     WebElement addFleetUser ;
 
     @FindBy(xpath="//*[ text()='Permission']")
-    WebElement Permission ;
+    WebElement adminPermission ;
 
-    @FindBy(xpath=".//*[@id='A3']")
-    WebElement Email ;
+    @FindBy(xpath="//*[text()='Email'][@id='A3']")
+    WebElement adminEmail ;
 
-    @FindBy(xpath=".//*[@id='A4']")
+    @FindBy(xpath="//.//*[@id='A4']")
     WebElement addClientUser ;
 
     @FindBy(xpath=".//*[@id='A43']")
     WebElement changeAdminPassword ;
 
-    @FindBy(xpath= ".//*[@id='A51']")
-    WebElement FleetAverage;
-
-    @FindBy(xpath = ".//*[@id='A56']")
-    WebElement SMSCredit;
-
-
 // Resevation
 
-    @FindBy(xpath=".//*[text()='Reservation']")
+    @FindBy(xpath="//*[ text()='Reservation']")
     WebElement ReservationLnk;
 
 // Dispatch
@@ -164,22 +155,20 @@ WebElement Admin ;
     @FindBy(xpath=".//*[@id='A31']")
     WebElement masterPackage ;
 
-   // @FindBy(xpath="//*[@id='A45']")
-   // WebElement vendorPackageMaster;
+    // @FindBy(xpath="//*[@id='A45']")
+    // WebElement vendorPackageMaster;
 
     @FindBy(xpath=".//*[@id='A23']")
     WebElement Add_PetrolPump;
 
     @FindBy(xpath = ".//*[text()='Add Garage']")
     WebElement Add_Garage;
-
-
 // Reports
 
     @FindBy(xpath=".//*[@id='A19']")
     WebElement Reports;
 
-    @FindBy(xpath="//*[@id='your-object']/div[2]/ul/li[9]/ul/li[1]/a")
+    @FindBy()
     WebElement reservationReports;
 
     @FindBy(xpath="//*[text()='Cancel Reservation']")
@@ -220,9 +209,6 @@ WebElement Admin ;
         this.driver=driver;
         PageFactory.initElements(driver, this);
     }
-
-    //Admin
-
     public void clickAddEmployee()
     {
         Admin.click();
@@ -235,22 +221,16 @@ WebElement Admin ;
         addFleetUser.click();
     }
 
-    public void clickPermission()
+    public void clickAdminPermission()
     {
         Admin.click();
-        Permission.click();
+        adminPermission.click();
     }
 
     public void clickEmail()
     {
         Admin.click();
-        Email.click();
-    }
-    public void clickFleetAverage()
-    {
-        Admin.click();
-        //driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
-        FleetAverage.click();
+        adminEmail.click();
     }
 
     public void clickAddClientUser()
@@ -265,13 +245,6 @@ WebElement Admin ;
         changeAdminPassword.click();
     }
 
-    public void clickSMSCredit()
-    {
-        Admin.click();
-        SMSCredit.click();
-    }
-
-//Reservation
 
     public  void clickReservation()
 
@@ -340,10 +313,7 @@ WebElement Admin ;
         billingLedger.click();
     }
 
-    //QuickInvoice
-
     public void clickQuickInvoice()
-
     {
         quickInvoice.click();
     }
@@ -450,8 +420,8 @@ WebElement Admin ;
 
     public void clickAddCompany()
     {
-       Master.click();
-       addCompany.click();
+        Master.click();
+        addCompany.click();
     }
 
     public void clickAddVendor()
@@ -470,12 +440,12 @@ WebElement Admin ;
         Master.click();
         masterPackage.click();
     }
-   /* public void clickVendorPackageMaster()
-    {
-        Master.click();
-        vendorPackageMaster.click();
-    }
-*/
+    /* public void clickVendorPackageMaster()
+     {
+         Master.click();
+         vendorPackageMaster.click();
+     }
+ */
     public void clickPetrolPump()
     {
         Master.click();
@@ -488,7 +458,7 @@ WebElement Admin ;
     }
     public void clickReports()
     {
-      Reports.click();
+        Reports.click();
     }
 
     public void clickReservationReports()

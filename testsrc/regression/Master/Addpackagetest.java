@@ -40,7 +40,8 @@ public class Addpackagetest
     ExtentReports extent = initExtentReport.init();
 
     @BeforeClass
-    public void init() {
+    public void init()
+    {
         driver.manage().window().maximize();
         LoginPage loginpage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         driver.manage().timeouts().implicitlyWait(20, SECONDS);
