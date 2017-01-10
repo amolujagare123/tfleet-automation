@@ -15,37 +15,37 @@ public class AddEmployee {
 
     WebDriver driver;
 
-        @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/a")
-        WebElement AdminLnk;
+    @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/a")
+    WebElement AdminLnk;
 
-        @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
-        WebElement AddEmployeeLnk;
+    @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
+    WebElement AddEmployeeLnk;
 
-        @FindBy(xpath = "//div[@class='left_grid']/h2")
-        WebElement AEHeadingText;
+    @FindBy(xpath = "//div[@class='left_grid']/h2")
+    WebElement AEHeadingText;
 
-        @FindBy(xpath = "//input[@id='MainContent_txtEmployeeName']")
-        WebElement EmpName;
+    @FindBy(xpath = "//input[@id='MainContent_txtEmployeeName']")
+    WebElement EmpName;
 
-        @FindBy(xpath = "//select[@id='MainContent_ddlDesignation']")
-        WebElement Designation;
+    @FindBy(xpath = "//select[@id='MainContent_ddlDesignation']")
+    WebElement Designation;
 
-        @FindBy(xpath = "//input[@id='MainContent_txtContactNo']")
-        WebElement ContactNo;
+    @FindBy(xpath = "//input[@id='MainContent_txtContactNo']")
+    WebElement ContactNo;
 
-        @FindBy(xpath = "//input[@id='MainContent_txtEmail']")
-        WebElement Email;
+    @FindBy(xpath = "//input[@id='MainContent_txtEmail']")
+    WebElement Email;
 
-        @FindBy(xpath = "//select[@id='MainContent_ddlBranch']")
-        WebElement Branch;
+    @FindBy(xpath = "//select[@id='MainContent_ddlBranch']")
+    WebElement Branch;
 
-        @FindBy(xpath = "//input[@id='MainContent_btnSave']")
-        WebElement Savebtn;
+    @FindBy(xpath = "//input[@id='MainContent_btnSave']")
+    WebElement Savebtn;
 
-    @FindBy(xpath = "//input[@id='MainContent_btnCancel']")
-    WebElement Cancelbtn;
+    /*@FindBy(xpath = "//input[@id='MainContent_btnCancel']")
+    WebElement Cancelbtn;*/
 
-    public AddEmployee(WebDriver driver){
+    public AddEmployee(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         if (!AEHeadingText.isDisplayed()) {
@@ -53,43 +53,44 @@ public class AddEmployee {
         }
     }
 
-    public void setAEHeadingText(String aeHeading)
-    {
+    public void setAEHeadingText(String aeHeading) {
         AEHeadingText.sendKeys(aeHeading);
     }
-    public void setEmpNameText(String empName)
-    {
+
+    public void setEmpNameText(String empName) {
         EmpName.sendKeys(empName);
     }
-    public void setContactNoText(String contactNo)
-    {
+
+    public void setContactNoText(String contactNo) {
         ContactNo.sendKeys(contactNo);
     }
-    public void setEmailText(String email)
-    {
+
+    public void setEmailText(String email) {
         Email.sendKeys(email);
     }
-    public void setSelectDesignation(String setDesignation)
-    {
+
+    public void setSelectDesignation(String setDesignation) {
         Select designationCombo = new Select(Designation);
         designationCombo.selectByValue(setDesignation);
     }
-    public void setSelectBranch(String setBranch)
-    {
+
+    public void setSelectBranch(String setBranch) {
         Select branchCombo = new Select(Branch);
         branchCombo.selectByValue(setBranch);
     }
-    public void clickSave()
-    {
+
+    public void clickSave() {
         Savebtn.click();
+
     }
-    public void clickCancel()
+}
+   /* public void clickCancel()
     {
         Cancelbtn.click();
-    }
+    }*/
 
 
-    public String getEmName()
+    /*public String getEmName()
     {
         return EmpName.getAttribute("Value");
     }
@@ -110,4 +111,4 @@ public class AddEmployee {
         return Branch.getText();
     }
 
-    }
+    }*/

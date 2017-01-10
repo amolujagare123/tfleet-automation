@@ -58,6 +58,7 @@ public class AddEmployeetest {
             try {
                 Menu menu = new Menu(driver);
                 test.log(LogStatus.INFO, "Menu Driver initialised");
+                
                 menu.clickAddEmployee();
                 test.log(LogStatus.INFO, "Add Emloyee page opened");
 
