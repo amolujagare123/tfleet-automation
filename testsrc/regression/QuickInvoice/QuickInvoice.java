@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 
@@ -32,7 +33,7 @@ public class QuickInvoice {
     @Test(dataProvider = "getdata")
     public void QuickInvoiceTest(String previousInvoice,String bookingNumber,String invoiceDate,String company,String reportingAddress,
                                  String rentalCity,String nameOfGuest,String bookedBy,String mobileNo,String email,String fleetType,
-                                 String owned,String fleetCategory,String fleetType,String )
+                                 String owned,String fleetCategory )throws IOException{}
 
 
 }
