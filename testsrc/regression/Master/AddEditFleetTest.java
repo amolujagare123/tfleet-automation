@@ -46,7 +46,8 @@ public class AddEditFleetTest {
         DashBoard dashbord=loginPage.Login("akshu.pokley@gmail.com","123");
         driver.manage().timeouts().implicitlyWait(30,SECONDS);
     }
-    @Test(dataProvider="getOwnFleetData")
+
+  /*  @Test(dataProvider="getOwnFleetData")
     public void AddEditOwnFleetTest(String fleetNo,String fleetCategory,String fleetType,
         String expected)throws IOException{
         ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
@@ -67,7 +68,7 @@ public class AddEditFleetTest {
             test.log(LogStatus.INFO, "alert displayed as " + actual);
 
             Assert.assertEquals(actual.trim(),expected.trim());
-            test.log(LogStatus.PASS, "PetrolPump Added Successfully");
+            test.log(LogStatus.PASS, "Fleet Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
@@ -100,7 +101,7 @@ public class AddEditFleetTest {
 
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet = workbook.getSheet("AddOwnFleetData");
+        HSSFSheet worksheet = workbook.getSheet("AddEditOwnFleet");
         int rowCount = worksheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount - 1][4];
         for (int i = 1; i < rowCount; i++) {
@@ -145,17 +146,18 @@ public class AddEditFleetTest {
         return data;
 
     }
-    @Test(dataProvider="getVendorFleetData")
+  */  @Test(dataProvider="getVendorFleetData")
     public void AddEditVendorFleetTest(String fleetNo,String fleetCategory,String fleetType,
                             String selectVendorName,String expected)throws IOException{
         ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
         try
         {
             Menu menu=new Menu(driver);
-            driver.manage().timeouts().implicitlyWait(30,SECONDS);
+            driver.manage().timeouts().implicitlyWait(50,SECONDS);
             menu.clickAddEditFleet();
             Add_fleet fleet=new Add_fleet(driver);
-            fleet.setOwnTypeFleet();
+            fleet.setVendorTypeFleet();
+            driver.manage().timeouts().implicitlyWait(50,SECONDS);
             fleet.setSelectVendorName(selectVendorName);
             fleet.setFleetNumber(fleetNo);
             fleet.selectFleetCategory(fleetCategory);
@@ -167,7 +169,7 @@ public class AddEditFleetTest {
             test.log(LogStatus.INFO, "alert displayed as " + actual);
 
             Assert.assertEquals(actual.trim(),expected.trim());
-            test.log(LogStatus.PASS, "PetrolPump Added Successfully");
+            test.log(LogStatus.PASS, "Fleet Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
 
@@ -200,7 +202,7 @@ public class AddEditFleetTest {
 
         HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet = workbook.getSheet("AddOwnFleetData");
+        HSSFSheet worksheet = workbook.getSheet("AddEditVendorFleet");
         int rowCount = worksheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount - 1][5];
         for (int i = 1; i < rowCount; i++) {

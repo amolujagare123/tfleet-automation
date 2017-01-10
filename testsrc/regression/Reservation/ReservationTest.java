@@ -50,11 +50,9 @@ public class ReservationTest {
         try {
 
             Menu menu = new Menu(driver);
-            driver.manage().timeouts().implicitlyWait(40, SECONDS);
-
+            driver.manage().timeouts().implicitlyWait(80, SECONDS);
             menu.clickReservation();
-            driver.manage().timeouts().implicitlyWait(40, SECONDS);
-
+            driver.manage().timeouts().implicitlyWait(60, SECONDS);
             Reservation reservation = new Reservation(driver);
 
             reservation.setSelectCompanyName(companyName);
@@ -100,7 +98,7 @@ public class ReservationTest {
 
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Reservation.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
-        HSSFSheet sheet = hssfWorkbook.getSheet("Resevation");
+        HSSFSheet sheet = hssfWorkbook.getSheet("Reservation");
         int rowCount = sheet.getPhysicalNumberOfRows();
 
         String[][] data = new String[rowCount - 1][20];
@@ -248,19 +246,6 @@ public class ReservationTest {
                 expectedCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][19] =expectedCell .getStringCellValue();
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
 
         return data;

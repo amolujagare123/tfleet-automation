@@ -61,9 +61,9 @@ public class AddGarageTest {
         ExtentTest test= extent.startTest("Test Add Garage","To check functionality of Save button");
         try{
             Menu menu=new Menu(driver);
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
             menu.clickAddGarage();
-            driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+            driver.manage().timeouts().implicitlyWait(70, TimeUnit.SECONDS);
 
             Add_Garage garage=new Add_Garage(driver);
             garage.setTxtGarageName(garageName);
@@ -118,7 +118,7 @@ public class AddGarageTest {
 
         HSSFWorkbook workbook=new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet=workbook.getSheet("AddPumpData");
+        HSSFSheet worksheet=workbook.getSheet("AddGarage");
         int rowCount=worksheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount-1][7];
         for(int i=1;i<rowCount;i++) {

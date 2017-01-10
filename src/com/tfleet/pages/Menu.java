@@ -46,7 +46,7 @@ WebElement Admin ;
 
 // Resevation
 
-    @FindBy(xpath="//*[ text()='Reservation']")
+    @FindBy(xpath=".//*[text()='Reservation']")
     WebElement ReservationLnk;
 
 // Dispatch
@@ -164,13 +164,13 @@ WebElement Admin ;
     @FindBy(xpath=".//*[@id='A31']")
     WebElement masterPackage ;
 
-    @FindBy(xpath="//*[@id='A45']")
-    WebElement vendorPackageMaster;
+   // @FindBy(xpath="//*[@id='A45']")
+   // WebElement vendorPackageMaster;
 
     @FindBy(xpath=".//*[@id='A23']")
     WebElement Add_PetrolPump;
 
-    @FindBy(xpath = ".//*[@id='A45']")
+    @FindBy(xpath = ".//*[text()='Add Garage']")
     WebElement Add_Garage;
 
 
@@ -274,6 +274,7 @@ WebElement Admin ;
 //Reservation
 
     public  void clickReservation()
+
     {
         ReservationLnk.click();
     }
@@ -469,12 +470,12 @@ WebElement Admin ;
         Master.click();
         masterPackage.click();
     }
-    public void clickVendorPackageMaster()
+   /* public void clickVendorPackageMaster()
     {
         Master.click();
         vendorPackageMaster.click();
     }
-
+*/
     public void clickPetrolPump()
     {
         Master.click();
