@@ -96,9 +96,9 @@ public class ReservationTest {
     @DataProvider
     public Object[][] getReservationData() throws IOException {
 
-        FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Reservation.xls");
+        FileInputStream fileInputStream = new FileInputStream("Excelsheet/Reservation.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
-        HSSFSheet sheet = hssfWorkbook.getSheet("Reservation");
+        HSSFSheet sheet = hssfWorkbook.getSheet("Sheet1");
         int rowCount = sheet.getPhysicalNumberOfRows();
 
         String[][] data = new String[rowCount - 1][20];
@@ -106,13 +106,13 @@ public class ReservationTest {
             HSSFRow row = sheet.getRow(i);
 
 
-            HSSFCell reservationDateCell = row.getCell(0);
+            /*HSSFCell reservationDateCell = row.getCell(0);
             if (reservationDateCell == null) {
                 data[i - 1][0] = "";
             } else {
                 reservationDateCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][0] = reservationDateCell.getStringCellValue();
-            }
+            }*/
             HSSFCell companyNameCell = row.getCell(1);
             if (companyNameCell == null) {
                 data[i - 1][1] = "";
@@ -183,13 +183,13 @@ public class ReservationTest {
                 fleetTypeCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][10] =fleetTypeCell .getStringCellValue();
             }
-            HSSFCell dateOfRequirementCell = row.getCell(11);
+            /*HSSFCell dateOfRequirementCell = row.getCell(11);
             if (dateOfRequirementCell  == null) {
                 data[i - 1][11] = "";
             } else {
                 dateOfRequirementCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][11] =dateOfRequirementCell .getStringCellValue();
-            }
+            }*/
             HSSFCell selectPackageCell = row.getCell(12);
             if (selectPackageCell == null) {
                 data[i - 1][12] = "";
@@ -232,13 +232,13 @@ public class ReservationTest {
                 specialInstructionCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][17] =specialInstructionCell .getStringCellValue();
             }
-            HSSFCell expiryDateCell = row.getCell(18);
+            /*HSSFCell expiryDateCell = row.getCell(18);
             if (expiryDateCell == null) {
                 data[i - 1][18] = "";
             } else {
                 expiryDateCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][18] =expiryDateCell .getStringCellValue();
-            }
+            }*/
             HSSFCell expectedCell = row.getCell(19);
             if (expectedCell == null) {
                 data[i - 1][19] = "";

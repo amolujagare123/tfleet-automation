@@ -65,13 +65,14 @@ public class AddClientsUserTest {
             test.log(LogStatus.INFO, "Save button clicked");
 
 
+        } catch (AssertionError e) {
+
+
         }
-
-
-    }
-    @DataProvider
+    /*@DataProvider
     public Object[][] getdata()
     {
 
+    }*/
     }
 }

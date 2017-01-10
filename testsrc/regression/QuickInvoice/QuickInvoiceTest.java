@@ -68,12 +68,41 @@ public class QuickInvoiceTest {
             test.log(LogStatus.INFO, "Reporting address set");
 
             quickInvoice.setSelectRentalCity(rentalCity);
-            test.log(LogStatus.INFO,"Rental City Select");
+            test.log(LogStatus.INFO, "Rental City Select");
 
+            quickInvoice.setTxtNameOfGuest(nameOfGuest);
+            test.log(LogStatus.INFO, "Name of guest set");
+
+            quickInvoice.setTxtBookedBy(bookedBy);
+            test.log(LogStatus.INFO, "Booked By set");
+
+            quickInvoice.setTxtMobileno(mobileNo);
+            test.log(LogStatus.INFO, "Mobile no set");
+
+            quickInvoice.setTxtEmail(email);
+            test.log(LogStatus.INFO, "Email set");
+
+            quickInvoice.clickOwned();
+            test.log(LogStatus.INFO, "Owned select");
+
+            quickInvoice.setSelectFleetCategory(fleetCategory);
+            test.log(LogStatus.INFO, "FleetCategory Set");
+
+            quickInvoice.setSelectFleetType(fleetType);
+            test.log(LogStatus.INFO, "FleetType set");
+
+            quickInvoice.setSelectFleetNo(fleetNumber);
+            test.log(LogStatus.INFO, "Fleet No Set");
+
+            quickInvoice.setSelectChauffeurName(chauffeurName);
+            test.log(LogStatus.INFO, "Chauffeur name set");
+
+           // quickInvoice.setSelectTimeInHr();
+
+
+        } catch (AssertionError e) {
 
 
         }
-
-
     }
 }
