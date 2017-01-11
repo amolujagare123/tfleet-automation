@@ -178,6 +178,10 @@ public class Reservation{
         Select minCombo=new Select(selectReportingTimeMin);
         minCombo.selectByVisibleText(min);
     }
+    public void clickOnotherMobNoForSMS()
+    {
+        txtOnotherMobNoCheckSMS.click();
+    }
     public void clickSave()
     {
         btnSave.click();
