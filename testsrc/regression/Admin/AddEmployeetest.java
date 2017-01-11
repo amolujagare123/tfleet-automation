@@ -178,12 +178,12 @@ public class AddEmployeetest {
                     data[i - 1][4] = BranchCell.getStringCellValue();
                 }
 
-                HSSFCell expectedResultCell = row.getCell(5);
-                if (expectedResultCell == null) {
+                HSSFCell ExpectedResultCell = row.getCell(5);
+                if (ExpectedResultCell == null) {
                     data[i - 1][5] = "";
                 } else {
-                    expectedResultCell.setCellType(Cell.CELL_TYPE_STRING);
-                    data[i - 1][5] = expectedResultCell.getStringCellValue();
+                    ExpectedResultCell.setCellType(Cell.CELL_TYPE_STRING);
+                    data[i - 1][5] = ExpectedResultCell.getStringCellValue();
                 }
             }
             return data;
