@@ -15,14 +15,14 @@ public class AddEmployee {
 
     WebDriver driver;
 
-    @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/a")
-    WebElement AdminLnk;
+   /* @FindBy(xpath = "./*//*[@id='your-object']/div[2]/ul/li[1]/a")
+    WebElement Admin;
 
-    @FindBy(xpath = ".//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
-    WebElement AddEmployeeLnk;
+    @FindBy(xpath = "./*//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
+    WebElement AddEmployee;*/
 
-    @FindBy(xpath = "//div[@class='left_grid']/h2")
-    WebElement AEHeadingText;
+    @FindBy(xpath = ".//*[@id='Form1']/div[3]/div[2]/div[1]/section/div/div[1]/div[1]/h2")
+    WebElement AddEmployee;
 
     @FindBy(xpath = "//input[@id='MainContent_txtEmployeeName']")
     WebElement EmpName;
@@ -48,14 +48,23 @@ public class AddEmployee {
     public AddEmployee(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
-        if (!AEHeadingText.isDisplayed()) {
+        if (!AddEmployee.isDisplayed()) {
             throw new IllegalStateException("This is not Employee Page ");
         }
     }
-
+/*
+    public void setAdminLnk(String adminLnk)
+    {
+        Admin.sendKeys(adminLnk);
+    }
+    public void setAddEmployeeLnk(String addEmployeeLnk)
+    {
+        AddEmployee.sendKeys(addEmployeeLnk);
+    }
     public void setAEHeadingText(String aeHeading) {
         AEHeadingText.sendKeys(aeHeading);
     }
+*/
 
     public void setEmpNameText(String empName) {
         EmpName.sendKeys(empName);
@@ -69,17 +78,20 @@ public class AddEmployee {
         Email.sendKeys(email);
     }
 
-    public void setSelectDesignation(String setDesignation) {
+    public void setSelectDesignation(String setDesignation)
+    {
         Select designationCombo = new Select(Designation);
         designationCombo.selectByValue(setDesignation);
     }
 
-    public void setSelectBranch(String setBranch) {
+    public void setSelectBranch(String setBranch)
+    {
         Select branchCombo = new Select(Branch);
         branchCombo.selectByValue(setBranch);
     }
 
-    public void clickSave() {
+    public void clickSave()
+    {
         Savebtn.click();
 
     }

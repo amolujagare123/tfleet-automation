@@ -16,14 +16,14 @@ public class Menu
     WebDriver driver;
 
 // Admin
-    @FindBy(xpath="//*[ text()='Admin']")
-WebElement Admin ;
+    @FindBy(xpath=".//*[@id='your-object']/div[2]/ul/li[1]/a")
+    WebElement Admin ;
 
-    @FindBy(xpath="//*[text()='Add Employee']")
-    WebElement addEmployee ;
+    @FindBy(xpath=".//*[@id='your-object']/div[2]/ul/li[1]/ul/li[1]/a")
+    WebElement AddEmployee ;
 
     @FindBy(xpath=".//*[@id='A1']")
-    WebElement addFleetUser ;
+    WebElement AddFleetUser ;
 
     @FindBy(xpath="//*[ text()='Permission']")
     WebElement Permission ;
@@ -226,13 +226,13 @@ WebElement Admin ;
     public void clickAddEmployee()
     {
         Admin.click();
-        addEmployee.click();
+        AddEmployee.click();
     }
 
     public void clickAddFleetUser()
     {
         Admin.click();
-        addFleetUser.click();
+        AddFleetUser.click();
     }
 
     public void clickPermission()

@@ -58,9 +58,9 @@ public class AddEmployeetest {
             try {
                 Menu menu = new Menu(driver);
                 test.log(LogStatus.INFO, "Menu Driver initialised");
-                
+
                 menu.clickAddEmployee();
-                test.log(LogStatus.INFO, "Add Emloyee page opened");
+                test.log(LogStatus.INFO, "Add Employee page opened");
 
                 AddEmployee addemployee = new AddEmployee(driver);
                 test.log(LogStatus.INFO, "Add Employee page objet created");
@@ -128,7 +128,6 @@ public class AddEmployeetest {
 
         @DataProvider
         public Object[][] getdata() throws IOException
-
         {
             FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_admin.xls");
 
@@ -178,6 +177,7 @@ public class AddEmployeetest {
                     BranchCell.setCellType(Cell.CELL_TYPE_STRING);
                     data[i - 1][4] = BranchCell.getStringCellValue();
                 }
+
                 HSSFCell expectedResultCell = row.getCell(5);
                 if (expectedResultCell == null) {
                     data[i - 1][5] = "";
@@ -185,14 +185,12 @@ public class AddEmployeetest {
                     expectedResultCell.setCellType(Cell.CELL_TYPE_STRING);
                     data[i - 1][5] = expectedResultCell.getStringCellValue();
                 }
-
-
-
             }
             return data;
-
         }
     }
+
+
 
 
     /*@Test
