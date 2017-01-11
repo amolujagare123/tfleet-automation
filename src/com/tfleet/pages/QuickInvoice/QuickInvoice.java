@@ -286,11 +286,16 @@ public class QuickInvoice {
         Select timeInMincombo = new Select(selectTimeInMin);
         timeInMincombo.selectByVisibleText(timeInMin);
     }
+    public void setTotalHrs(String TotalHrs)
+    {
+        totalHrs.sendKeys(TotalHrs);
+    }
     public void setTxtKmOut(String kmOut)
     {
         txtKmOut.sendKeys(kmOut);
     }
     public void setTxtKmIn(String kmIn)
+
     {
         txtKmIn.sendKeys(kmIn);
     }

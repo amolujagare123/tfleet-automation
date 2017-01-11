@@ -57,6 +57,7 @@ public class AddClientsUserTest {
         try {
             Menu menu = new Menu(driver);
             test.log(LogStatus.INFO, "Menu Driver Initialised");
+
             menu.clickAddClientUser();
             test.log(LogStatus.INFO, "AddClientUser Page Opened");
 
@@ -70,7 +71,7 @@ public class AddClientsUserTest {
             test.log(LogStatus.INFO, "User EmailId set");
 
             addClientsUser.setPassword(password);
-            test.log(LogStatus.INFO, "Pasword set");
+            test.log(LogStatus.INFO, "Password set");
 
             addClientsUser.ClickSave();
             test.log(LogStatus.INFO, "Save button clicked");
@@ -87,7 +88,7 @@ public class AddClientsUserTest {
 
 
             Assert.assertEquals(actual.trim(), expected.trim());
-            test.log(LogStatus.PASS, "Company Added Successfully");
+            test.log(LogStatus.PASS, "Client User Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
 
@@ -154,12 +155,6 @@ public class AddClientsUserTest {
                 expectedResult.setCellType(Cell.CELL_TYPE_STRING);
                 data[i-1][3]=expectedResult.getStringCellValue();
             }
-
-
-
-
-
-
         }
         return data;
 
