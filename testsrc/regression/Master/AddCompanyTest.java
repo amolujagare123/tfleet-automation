@@ -103,7 +103,7 @@ public class AddCompanyTest
             addcompany.clickSave();
             test.log(LogStatus.INFO, "save button clicked");
 
-            //  String expected = "Company Added Successfully";
+
             driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
             Alert alert = driver.switchTo().alert();
 
