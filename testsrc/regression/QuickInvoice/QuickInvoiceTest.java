@@ -368,33 +368,150 @@ public class QuickInvoiceTest {
             }
 
             HSSFCell timeInHrCell = row.getCell(17);
-            if ( timeInHrCell == null) {
+            if (timeInHrCell == null) {
                 data[i - 1][17] = "";
             } else {
                 timeInHrCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][17] =  timeInHrCell.getStringCellValue();
+                data[i - 1][17] = timeInHrCell.getStringCellValue();
             }
 
             HSSFCell timeInMinCell = row.getCell(18);
-            if ( timeInMinCell == null) {
+            if (timeInMinCell == null) {
                 data[i - 1][18] = "";
             } else {
                 timeInMinCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][18] =  timeInMinCell.getStringCellValue();
+                data[i - 1][18] = timeInMinCell.getStringCellValue();
             }
 
+            HSSFCell totalHrsCell = row.getCell(19);
+            if (totalHrsCell == null) {
+                data[i - 1][19] = "";
+            } else {
+                totalHrsCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][19] = totalHrsCell.getStringCellValue();
+            }
 
+            HSSFCell kmOutCell = row.getCell(20);
+            if (kmOutCell == null) {
+                data[i - 1][20] = "";
+            } else {
+                kmOutCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][20] = kmOutCell.getStringCellValue();
+            }
 
+            HSSFCell kmInCell = row.getCell(21);
+            if (kmInCell == null) {
+                data[i - 1][21] = "";
+            } else {
+                kmInCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][21] = kmInCell.getStringCellValue();
+            }
 
+            HSSFCell totalkmCell = row.getCell(22);
+            if (totalkmCell == null) {
+                data[i - 1][22] = "";
+            } else {
+                totalkmCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][22] = totalkmCell.getStringCellValue();
+            }
 
+            HSSFCell packageNameCell = row.getCell(23);
+            if (packageNameCell == null) {
+                data[i - 1][23] = "";
+            } else {
+                packageNameCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][23] = packageNameCell.getStringCellValue();
+            }
 
+            HSSFCell feedbackCell = row.getCell(24);
+            if (feedbackCell == null) {
+                data[i - 1][24] = "";
+            } else {
+                feedbackCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][24] = feedbackCell.getStringCellValue();
+            }
 
+            HSSFCell basicRateCell = row.getCell(25);
+            if (basicRateCell == null) {
+                data[i - 1][25] = "";
+            } else {
+                basicRateCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][25] = basicRateCell.getStringCellValue();
+            }
 
+            HSSFCell extraKmAmountCell = row.getCell(26);
+            if (extraKmAmountCell == null) {
+                data[i - 1][26] = "";
+            } else {
+                extraKmAmountCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][26] = extraKmAmountCell.getStringCellValue();
+            }
 
+            HSSFCell extraHrAmountCell = row.getCell(27);
+            if (extraHrAmountCell == null) {
+                data[i - 1][27] = "";
+            } else {
+                extraHrAmountCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][27] = extraHrAmountCell.getStringCellValue();
+            }
 
+            HSSFCell outStationAllowenceCell = row.getCell(28);
+            if (outStationAllowenceCell == null) {
+                data[i - 1][28] = "";
+            } else {
+                outStationAllowenceCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][28] = outStationAllowenceCell.getStringCellValue();
+            }
 
+            HSSFCell nightAllowenceCell = row.getCell(29);
+            if (nightAllowenceCell == null) {
+                data[i - 1][29] = "";
+            } else {
+                nightAllowenceCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][29] = nightAllowenceCell.getStringCellValue();
+            }
 
+            HSSFCell parkingCell = row.getCell(30);
+            if (parkingCell == null) {
+                data[i - 1][30] = "";
+            } else {
+                parkingCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][30] = parkingCell.getStringCellValue();
+            }
 
+            HSSFCell tollCell = row.getCell(31);
+            if (tollCell == null) {
+                data[i - 1][31] = "";
+            } else {
+                tollCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][31] = tollCell.getStringCellValue();
+            }
 
+            HSSFCell otherRecoverableCell = row.getCell(32);
+            if (otherRecoverableCell == null) {
+                data[i - 1][32] = "";
+            } else {
+                otherRecoverableCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][32] = otherRecoverableCell.getStringCellValue();
+            }
+
+            HSSFCell interStateTaxCell = row.getCell(33);
+            if (interStateTaxCell == null) {
+                data[i - 1][33] = "";
+            } else {
+                interStateTaxCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][33] = interStateTaxCell.getStringCellValue();
+            }
+
+            HSSFCell totalCell = row.getCell(33);
+            if (totalCell == null) {
+                data[i - 1][33] = "";
+            } else {
+                totalCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][33] = totalCell.getStringCellValue();
+            }
+
+        }
+                    return  data;
         }
     }
