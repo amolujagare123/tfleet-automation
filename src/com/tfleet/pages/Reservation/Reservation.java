@@ -98,14 +98,15 @@ public class Reservation{
     {
         txtReportingAddress.sendKeys(reportingAddress);
     }
-    public void setTxtBookedBy(String bookedBy)
-    {
-        txtBookedBy.sendKeys((bookedBy));
-    }
     public void setTxtNameOfGuest(String nameOfGuest)
     {
         txtNameOfGuest.sendKeys(nameOfGuest);
     }
+    public void setTxtBookedBy(String bookedBy)
+    {
+        txtBookedBy.sendKeys((bookedBy));
+    }
+
     public void setTxtMobileNo(String mobileNo)
     {
         txtMobileNo.sendKeys(mobileNo);
@@ -177,6 +178,10 @@ public class Reservation{
     {
         Select minCombo=new Select(selectReportingTimeMin);
         minCombo.selectByVisibleText(min);
+    }
+    public void clickOnotherMobNoForSMS()
+    {
+        txtOnotherMobNoCheckSMS.click();
     }
     public void clickSave()
     {

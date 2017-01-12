@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Cell;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -50,24 +51,45 @@ public class ReservationTest {
         try {
 
             Menu menu = new Menu(driver);
-            driver.manage().timeouts().implicitlyWait(80, SECONDS);
+            driver.manage().timeouts().implicitlyWait(50, SECONDS);
             menu.clickReservation();
             driver.manage().timeouts().implicitlyWait(60, SECONDS);
             Reservation reservation = new Reservation(driver);
 
             reservation.setSelectCompanyName(companyName);
+            Thread.sleep(30);
+
             reservation.setTxtReportingAddress(reportingAddress);
+            Thread.sleep(30);
+
             reservation.setSelectRentalCity(rentalCity);
+            Thread.sleep(30);
+
             reservation.setTxtNameOfGuest(nameOfGuest);
+            Thread.sleep(30);
+
             reservation.setTxtBookedBy(bookedBy);
+            Thread.sleep(30);
+
             reservation.setTxtMobileNo(mobileNo);
             reservation.setTxtEmail(email);
             reservation.setTxtOnotherMobNoForSMS(otherMobNoForSMS);
+            Thread.sleep(30);
+
+            reservation.clickOnotherMobNoForSMS();
+
             reservation.setSelectFleetCategory(fleetCategory);
+            Thread.sleep(10);
+
             reservation.setSelectFleetType(fleetType);
+            Thread.sleep(30);
+
             reservation.setSelectPackage(selectPackage);
+
             reservation.setSelectReportingTimeHrs(reportingTimeHr);
+
             reservation.setSelectReportingTimeMin(reportingTimeMin);
+
             reservation.setTxtEstimateAmount(estimateAmount);
             reservation.setSelectBillingMode(billingMode);
             reservation.setTxtSpecialInstuction(specialInstruction);
@@ -96,6 +118,7 @@ public class ReservationTest {
     @DataProvider
     public Object[][] getReservationData() throws IOException {
 
+
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Reservation.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("Sheet1");
@@ -104,7 +127,6 @@ public class ReservationTest {
         String[][] data = new String[rowCount - 1][20];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = sheet.getRow(i);
-
 
             /*HSSFCell reservationDateCell = row.getCell(0);
             if (reservationDateCell == null) {
@@ -146,77 +168,77 @@ public class ReservationTest {
                 data[i - 1][5] = "";
             } else {
                 bookedByCell .setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][5] = bookedByCell .getStringCellValue();
+                data[i - 1][5] = bookedByCell.getStringCellValue();
             }
             HSSFCell mobileNoCell = row.getCell(6);
             if (mobileNoCell  == null) {
                 data[i - 1][6] = "";
             } else {
                 mobileNoCell .setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][6] = mobileNoCell .getStringCellValue();
+                data[i - 1][6] = mobileNoCell.getStringCellValue();
             }
             HSSFCell emailCell = row.getCell(7);
             if (emailCell  == null) {
                 data[i - 1][7] = "";
             } else {
                emailCell .setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][7] =emailCell .getStringCellValue();
+                data[i - 1][7] =emailCell.getStringCellValue();
             }
             HSSFCell otherMobNoForSMSCell = row.getCell(8);
             if (otherMobNoForSMSCell  == null) {
                 data[i - 1][8] = "";
             } else {
                 otherMobNoForSMSCell .setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][8] =otherMobNoForSMSCell .getStringCellValue();
+                data[i - 1][8]=otherMobNoForSMSCell.getStringCellValue();
             }
             HSSFCell fleetCategoryCell = row.getCell(9);
             if (fleetCategoryCell  == null) {
                 data[i - 1][9] = "";
             } else {
                 fleetCategoryCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][9] =fleetCategoryCell .getStringCellValue();
+                data[i - 1][9] =fleetCategoryCell.getStringCellValue();
             }
             HSSFCell fleetTypeCell = row.getCell(10);
             if (fleetTypeCell  == null) {
                 data[i - 1][10] = "";
             } else {
                 fleetTypeCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][10] =fleetTypeCell .getStringCellValue();
+                data[i - 1][10] =fleetTypeCell.getStringCellValue();
             }
             /*HSSFCell dateOfRequirementCell = row.getCell(11);
             if (dateOfRequirementCell  == null) {
                 data[i - 1][11] = "";
             } else {
                 dateOfRequirementCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][11] =dateOfRequirementCell .getStringCellValue();
+                data[i - 1][11] =dateOfRequirementCell.getStringCellValue();
             }*/
             HSSFCell selectPackageCell = row.getCell(12);
             if (selectPackageCell == null) {
                 data[i - 1][12] = "";
             } else {
                 selectPackageCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][12] =selectPackageCell .getStringCellValue();
+                data[i - 1][12] =selectPackageCell.getStringCellValue();
             }
             HSSFCell reportingTimeHrCell = row.getCell(13);
             if (reportingTimeHrCell == null) {
                 data[i - 1][13] = "";
             } else {
                 reportingTimeHrCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][13] =reportingTimeHrCell .getStringCellValue();
+                data[i - 1][13] =reportingTimeHrCell.getStringCellValue();
             }
             HSSFCell reportingTimeMinCell = row.getCell(14);
             if (reportingTimeMinCell == null) {
                 data[i - 1][14] = "";
             } else {
                 reportingTimeMinCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][14] =reportingTimeMinCell .getStringCellValue();
+                data[i - 1][14] =reportingTimeMinCell.getStringCellValue();
             }
             HSSFCell estimateAmountCell = row.getCell(15);
             if (estimateAmountCell == null) {
                 data[i - 1][15] = "";
             } else {
                 estimateAmountCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][15] =estimateAmountCell .getStringCellValue();
+                data[i - 1][15] =estimateAmountCell.getStringCellValue();
             }
             HSSFCell billingModeCell = row.getCell(16);
             if (billingModeCell == null) {
@@ -230,7 +252,7 @@ public class ReservationTest {
                 data[i - 1][17] = "";
             } else {
                 specialInstructionCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][17] =specialInstructionCell .getStringCellValue();
+                data[i - 1][17] =specialInstructionCell.getStringCellValue();
             }
             /*HSSFCell expiryDateCell = row.getCell(18);
             if (expiryDateCell == null) {
@@ -244,7 +266,7 @@ public class ReservationTest {
                 data[i - 1][19] = "";
             } else {
                 expectedCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][19] =expectedCell .getStringCellValue();
+                data[i - 1][19] =expectedCell.getStringCellValue();
             }
         }
 
