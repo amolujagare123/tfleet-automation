@@ -503,12 +503,28 @@ public class QuickInvoiceTest {
                 data[i - 1][33] = interStateTaxCell.getStringCellValue();
             }
 
-            HSSFCell totalCell = row.getCell(33);
+            HSSFCell totalCell = row.getCell(34);
             if (totalCell == null) {
-                data[i - 1][33] = "";
+                data[i - 1][34] = "";
             } else {
                 totalCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][33] = totalCell.getStringCellValue();
+                data[i - 1][34] = totalCell.getStringCellValue();
+            }
+
+            HSSFCell serviceTaxAmountCell = row.getCell(35);
+            if (serviceTaxAmountCell == null) {
+                data[i - 1][35] = "";
+            } else {
+                serviceTaxAmountCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][35] = serviceTaxAmountCell.getStringCellValue();
+            }
+
+            HSSFCell grossAmountCell = row.getCell(36);
+            if (grossAmountCell == null) {
+                data[i - 1][36] = "";
+            } else {
+                grossAmountCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][36] = grossAmountCell.getStringCellValue();
             }
 
         }
