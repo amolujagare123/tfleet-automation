@@ -117,10 +117,10 @@ public class QuickInvoiceTest {
             test.log(LogStatus.INFO, "TimeOutMin Select");
 
             quickInvoice.setSelectTimeInHr(timeIn);
-            test.log(LogStatus.INFO,"TimeinHr select ");
+            test.log(LogStatus.INFO, "TimeinHr select ");
 
             quickInvoice.setSelectTimeInMin(timeIn);
-            test.log(LogStatus.INFO,"TimeinMin select");
+            test.log(LogStatus.INFO, "TimeinMin select");
 
             quickInvoice.setTotalHrs(totalHrs);
             test.log(LogStatus.INFO, "Total Hrs set");
@@ -132,7 +132,7 @@ public class QuickInvoiceTest {
             test.log(LogStatus.INFO, "KmIn set");
 
             quickInvoice.setTotalKm(totalKm);
-            test.log(LogStatus.INFO,"Total KM set");
+            test.log(LogStatus.INFO, "Total KM set");
 
             quickInvoice.setSelectPackageName(packageName);
             test.log(LogStatus.INFO, "Package Name Select");
@@ -218,17 +218,17 @@ public class QuickInvoiceTest {
         extent.endTest(test);
         extent.flush();
     }
+
     @DataProvider
-    public Object[][] getdata() throws IOException
-    {
-        FileInputStream fileInputStream=new FileInputStream("Excelsheet/Regression_Master.xls");
+    public Object[][] getdata() throws IOException {
+        FileInputStream fileInputStream = new FileInputStream("Excelsheet/Regression_Master.xls");
 
-        HSSFWorkbook workbook=new HSSFWorkbook(fileInputStream);
+        HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 
-        HSSFSheet worksheet=workbook.getSheet("AddCompanyData");
-        int rowCount=worksheet.getPhysicalNumberOfRows();
-        String[][] data = new String[rowCount-1][40];
-        for(int i=1;i<rowCount;i++) {
+        HSSFSheet worksheet = workbook.getSheet("AddCompanyData");
+        int rowCount = worksheet.getPhysicalNumberOfRows();
+        String[][] data = new String[rowCount - 1][40];
+        for (int i = 1; i < rowCount; i++) {
             HSSFRow row = worksheet.getRow(i);
 
             HSSFCell previousInvoiceCell = row.getCell(0);
@@ -327,12 +327,60 @@ public class QuickInvoiceTest {
                 data[i - 1][11] = fleetNumberCell.getStringCellValue();
             }
 
-            HSSFCell chauffeurNameCell = row.getCell(11);
+            HSSFCell chauffeurNameCell = row.getCell(12);
             if (chauffeurNameCell == null) {
-                data[i - 1][11] = "";
+                data[i - 1][12] = "";
             } else {
                 chauffeurNameCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][11] = chauffeurNameCell.getStringCellValue();
+                data[i - 1][12] = chauffeurNameCell.getStringCellValue();
+            }
+
+            HSSFCell dateOutCell = row.getCell(13);
+            if (dateOutCell == null) {
+                data[i - 1][13] = "";
+            } else {
+                dateOutCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][13] = dateOutCell.getStringCellValue();
+            }
+
+            HSSFCell dateInCell = row.getCell(14);
+            if (dateInCell == null) {
+                data[i - 1][14] = "";
+            } else {
+                dateInCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][14] = dateInCell.getStringCellValue();
+            }
+
+            HSSFCell timeOutHrCell = row.getCell(15);
+            if (timeOutHrCell == null) {
+                data[i - 1][15] = "";
+            } else {
+                timeOutHrCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][15] = timeOutHrCell.getStringCellValue();
+            }
+
+            HSSFCell timeOutMinCell = row.getCell(16);
+            if (timeOutMinCell == null) {
+                data[i - 1][16] = "";
+            } else {
+                timeOutMinCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][16] = timeOutMinCell.getStringCellValue();
+            }
+
+            HSSFCell timeInHrCell = row.getCell(17);
+            if ( timeInHrCell == null) {
+                data[i - 1][17] = "";
+            } else {
+                timeInHrCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][17] =  timeInHrCell.getStringCellValue();
+            }
+
+            HSSFCell timeInMinCell = row.getCell(18);
+            if ( timeInMinCell == null) {
+                data[i - 1][18] = "";
+            } else {
+                timeInMinCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][18] =  timeInMinCell.getStringCellValue();
             }
 
 
@@ -348,24 +396,5 @@ public class QuickInvoiceTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
+    }
