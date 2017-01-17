@@ -60,9 +60,9 @@ public class AddEditFleetTest {
             fleet.setOwnTypeFleet();
             fleet.setFleetNumber(fleetNo);
             fleet.selectFleetCategory(fleetCategory);
-            Thread.sleep(5000);
+            Thread.sleep(4000);
             fleet.selectFleetType(fleetType);
-            Thread.sleep(5000);
+            Thread.sleep(3000);
             fleet.ClickBtnSave();
             Alert alert=driver.switchTo().alert();
             String actual=alert.getText();
@@ -261,4 +261,4 @@ public class AddEditFleetTest {
         return data;
 
     }
-    }
+}

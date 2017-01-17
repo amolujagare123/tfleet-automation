@@ -96,7 +96,7 @@ public class Add_fleet {
     public void selectFleetType(String fType)
     {
         Select fTypeCombo=new Select(fleetType);
-        fTypeCombo.selectByValue(fType);
+        fTypeCombo.selectByVisibleText(fType);
     }
     public void setSelectVendorName(String vendorName)
     {

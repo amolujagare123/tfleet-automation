@@ -4,6 +4,7 @@ import com.tfleet.pages.DashBoard;
 import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.pages.Reservation.Reservation;
+import com.tfleet.utilities.Driver;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -26,15 +27,14 @@ import java.io.IOException;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ReservationTest {
-    WebDriver driver;
+    WebDriver driver= Driver.getDriver(Driver.DriverTypes.CHROME);
 
     @BeforeClass
     public void init()
     {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        driver = new ChromeDriver();
-        LoginPage loginpage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
+
         driver.manage().window().maximize();
+        LoginPage loginpage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         DashBoard dashboard = loginpage.Login("akshu.pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(30, SECONDS);
         driver.manage().timeouts().implicitlyWait(40, SECONDS);
@@ -57,42 +57,52 @@ public class ReservationTest {
             Reservation reservation = new Reservation(driver);
 
             reservation.setSelectCompanyName(companyName);
-            Thread.sleep(30);
+            Thread.sleep(8000);
 
             reservation.setTxtReportingAddress(reportingAddress);
-            Thread.sleep(30);
+            Thread.sleep(3000);
 
             reservation.setSelectRentalCity(rentalCity);
-            Thread.sleep(30);
+            Thread.sleep(5000);
 
             reservation.setTxtNameOfGuest(nameOfGuest);
-            Thread.sleep(30);
+            Thread.sleep(3000);
 
             reservation.setTxtBookedBy(bookedBy);
-            Thread.sleep(30);
+            Thread.sleep(5000);
 
             reservation.setTxtMobileNo(mobileNo);
             reservation.setTxtEmail(email);
             reservation.setTxtOnotherMobNoForSMS(otherMobNoForSMS);
-            Thread.sleep(30);
+            Thread.sleep(3000);
 
             reservation.clickOnotherMobNoForSMS();
 
             reservation.setSelectFleetCategory(fleetCategory);
-            Thread.sleep(10);
+            Thread.sleep(8000);
 
             reservation.setSelectFleetType(fleetType);
-            Thread.sleep(30);
+            Thread.sleep(8000);
 
             reservation.setSelectPackage(selectPackage);
+            Thread.sleep(8000);
+
 
             reservation.setSelectReportingTimeHrs(reportingTimeHr);
+            Thread.sleep(8000);
 
             reservation.setSelectReportingTimeMin(reportingTimeMin);
+            Thread.sleep(8000);
+
 
             reservation.setTxtEstimateAmount(estimateAmount);
+            Thread.sleep(5000);
+
             reservation.setSelectBillingMode(billingMode);
+            Thread.sleep(6000);
+
             reservation.setTxtSpecialInstuction(specialInstruction);
+
             reservation.clickSave();
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
             Alert alert = driver.switchTo().alert();
@@ -136,30 +146,38 @@ public class ReservationTest {
                 data[i - 1][0] = reservationDateCell.getStringCellValue();
             }*/
             HSSFCell companyNameCell = row.getCell(1);
-            if (companyNameCell == null) {
+            if (companyNameCell == null)
+            {
                 data[i - 1][1] = "";
-            } else {
+            } else
+            {
                 companyNameCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][1] = companyNameCell.getStringCellValue();
             }
             HSSFCell reportingAddressCell = row.getCell(2);
-            if (reportingAddressCell == null) {
+            if (reportingAddressCell == null)
+            {
                 data[i - 1][2] = "";
-            } else {
+            } else
+            {
                 reportingAddressCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][2] = reportingAddressCell.getStringCellValue();
             }
             HSSFCell rentalCityCell = row.getCell(3);
-            if (rentalCityCell == null) {
+            if (rentalCityCell == null)
+            {
                 data[i - 1][3] = "";
-            } else {
+            } else
+            {
                 rentalCityCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][3] = rentalCityCell.getStringCellValue();
             }
             HSSFCell nameOfGuestCell = row.getCell(4);
-            if (nameOfGuestCell == null) {
+            if (nameOfGuestCell == null)
+            {
                 data[i - 1][4] = "";
-            } else {
+            } else
+            {
                 nameOfGuestCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][4] = nameOfGuestCell.getStringCellValue();
             }
@@ -262,9 +280,11 @@ public class ReservationTest {
                 data[i - 1][18] =expiryDateCell .getStringCellValue();
             }*/
             HSSFCell expectedCell = row.getCell(19);
-            if (expectedCell == null) {
+            if (expectedCell == null)
+            {
                 data[i - 1][19] = "";
-            } else {
+            } else
+            {
                 expectedCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][19] =expectedCell.getStringCellValue();
             }
