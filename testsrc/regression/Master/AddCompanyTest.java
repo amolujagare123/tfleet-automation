@@ -471,7 +471,7 @@ public class AddCompanyTest
         addcompany.setTxtsixthConPerson("Neha");
         addcompany.setTxtsixthConNo("6767778987");
 
-        addcompany.clickSave();
+            addcompany.clickSave();
 
 
     }*/
