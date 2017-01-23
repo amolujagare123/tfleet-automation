@@ -106,7 +106,7 @@ public class Menu
     @FindBy(xpath="//*[@id='A9']")
     WebElement fuelConsumption;
 
-    @FindBy(xpath="//*[@id='A16']")
+    @FindBy(xpath=".//*[@id='A53']")
     WebElement Allowance;
 
     @FindBy(xpath="//*[@id='A15']")
@@ -349,11 +349,6 @@ public class Menu
     }
 
 
-    public void clickAccount()
-    {
-        Account.click();
-
-    }
 
     public void clickAccountExpense()
     {
@@ -366,7 +361,7 @@ public class Menu
         Account.click();
         fuelConsumption.click();
     }
-    public void clickAllowance()
+    public void clickAccountAllowance()
     {
         Account.click();
         Allowance.click();

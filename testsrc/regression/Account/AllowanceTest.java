@@ -43,10 +43,13 @@ public class AllowanceTest {
     public void allowanceTest(String allowanceType, String employeeName, String description, String amount, String expected) throws IOException {
         try {
             Menu menu = new Menu(driver);
-            menu.clickAccount();
+            menu.clickAccountAllowance();
+            driver.manage().timeouts().implicitlyWait(40,SECONDS);
             Allowance allowance = new Allowance(driver);
             allowance.setSelectAllowanceType(allowanceType);
+            Thread.sleep(3000);
             allowance.setSelectEmployee(employeeName);
+            Thread.sleep(3000);
             allowance.setTxtDescription(description);
             allowance.setTxtAmount(amount);
             allowance.clickBtnSave();
@@ -54,7 +57,7 @@ public class AllowanceTest {
             Alert alert = driver.switchTo().alert();
             String actual = alert.getText();
             alert.accept();
-            Assert.assertEquals(actual.trim(), expexted.trim());
+            Assert.assertEquals(actual.trim(), expected.trim());
 
         } catch (AssertionError e) {
 
@@ -71,7 +74,7 @@ public class AllowanceTest {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("AllowanceData");
-        int rowcount = sheet.getPhysicalNumberOfRows();
+        int rowCount = sheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount - 1][5];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = sheet.getRow(i);

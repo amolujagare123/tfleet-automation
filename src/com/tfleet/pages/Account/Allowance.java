@@ -28,7 +28,7 @@ public class Allowance {
     @FindBy(xpath=".//*[@id='MainContent_txtDescription']")
     WebElement txtDescription ;
 
-    @FindBy(xpath=".//*[@id='MainContent_txtDescription']")
+    @FindBy(xpath=".//*[@id='MainContent_txtAmount']")
     WebElement txtAmount ;
 
     @FindBy(xpath=".//*[@id='MainContent_btnSave']")
