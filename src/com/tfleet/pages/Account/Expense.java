@@ -16,12 +16,6 @@ public class Expense {
     @FindBy(xpath=".//*[@id='Form1']//div[1]/section/div//div[1]/h2")
     WebElement expenseHeading;
 
-    @FindBy(xpath=".//*[@id='MainContent_txtDate']")
-    WebElement selectDate;
-
-    @FindBy(xpath=".//*[@id='MainContent_txtInvoiceNo']")
-    WebElement txtExpenseNo;
-
     @FindBy(xpath=".//*[@id='MainContent_txtPNRNo']")
     WebElement txtPNRNo;
 
@@ -42,6 +36,9 @@ public class Expense {
 
     @FindBy(xpath=".//*[@id='MainContent_ddlPayMode']")
     WebElement selectPaymentMode;
+
+    @FindBy(xpath=".//*[@id='MainContent_txtChequeNo']")
+    WebElement txtChqOrDDNO;
 
     @FindBy(xpath=".//*[@id='MainContent_txtAmount']")
     WebElement txtAmount;
@@ -68,11 +65,7 @@ public class Expense {
     {
         txtPNRNo.sendKeys(PNR);
     }
-    public void setTxtExpenseNo(String expenseNo)
-    {
-        txtExpenseNo.sendKeys(expenseNo);
 
-    }
     public void setTxtpaidToParty(String partyName)
     {
         txtpaidToParty.sendKeys(partyName);
@@ -80,9 +73,7 @@ public class Expense {
     public void setTxtDescription(String description){txtDescription.sendKeys(description);}
     public void setTxtAmount(String amount){txtAmount.sendKeys(amount);}
     public void setTxtAdditionalInformation(String information){txtAdditionalInformation.sendKeys(information);}
-    /*public void setSelectDate()
-    {}
-     */
+   public void setTxtChequeOrDDNo(String chqNo){txtChqOrDDNO.sendKeys(chqNo);}
     public void setSelectFleetNo(String fleetNo)
     {
         Select fleetNoCombo=new Select(selectFleetNo);

@@ -1,10 +1,14 @@
 package regression.Reservation;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import com.tfleet.pages.DashBoard;
 import com.tfleet.pages.LoginPage;
 import com.tfleet.pages.Menu;
 import com.tfleet.pages.Reservation.Reservation;
 import com.tfleet.utilities.Driver;
+import com.tfleet.utilities.initExtentReport;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -24,11 +28,12 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import static com.tfleet.utilities.TakeScreenshot.takeScreenshot;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class ReservationTest {
     WebDriver driver= Driver.getDriver(Driver.DriverTypes.CHROME);
-
+    ExtentReports extent = initExtentReport.init();
     @BeforeClass
     public void init()
     {
@@ -47,6 +52,7 @@ public class ReservationTest {
                                 String fleetCategory, String fleetType, String dateOfRequirement, String selectPackage,
                                 String reportingTimeHr, String reportingTimeMin, String estimateAmount, String billingMode,
                                 String specialInstruction, String expiryDate, String expected) throws IOException {
+        ExtentTest test = extent.startTest("Test to make Reservation | save record", "To test the save button functionality");
 
         try {
 
@@ -113,15 +119,25 @@ public class ReservationTest {
         }
         catch (AssertionError e)
         {
-            System.out.print("there is an error" + e);
+            test.log(LogStatus.FAIL, e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
         }
-        catch(NoSuchElementException e)
+        catch (NoSuchElementException e)
         {
-            System.out.print("there is an error" + e);
+            test.log(LogStatus.FAIL, "Element not found : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
+
         }
-        catch (Throwable e) {
-            System.out.print("there is an error" + e);
+
+        catch(Throwable e)
+        {
+            test.log(LogStatus.ERROR,"There is Error : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
         }
+
+        extent.endTest(test);
+        extent.flush();
 
     }
 

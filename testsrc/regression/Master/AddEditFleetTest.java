@@ -35,7 +35,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class AddEditFleetTest {
 
     WebDriver driver= Driver.getDriver(Driver.DriverTypes.CHROME);
-    //ExtentReports extent= initExtentReport.init();
+    ExtentReports extent= initExtentReport.init();
 
     @BeforeClass
     public void init()
@@ -50,7 +50,7 @@ public class AddEditFleetTest {
    @Test(dataProvider="getOwnFleetData")
     public void AddEditOwnFleetTest(String fleetNo,String fleetCategory,String fleetType,
         String expected)throws IOException{
-       // ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
+       ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
         try
         {
             Menu menu=new Menu(driver);
@@ -67,35 +67,35 @@ public class AddEditFleetTest {
             Alert alert=driver.switchTo().alert();
             String actual=alert.getText();
             alert.accept();
-           // test.log(LogStatus.INFO, "alert displayed as " + actual);
+            test.log(LogStatus.INFO, "alert displayed as " + actual);
 
             Assert.assertEquals(actual.trim(),expected.trim());
-            /*test.log(LogStatus.PASS, "Fleet Added Successfully");
+            test.log(LogStatus.PASS, "Fleet Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch (AssertionError e)
         {
-            /*test.log(LogStatus.FAIL, e);
+            test.log(LogStatus.FAIL, e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch (NoSuchElementException e)
         {
-            /*test.log(LogStatus.FAIL, "Element not found : "+e);
+            test.log(LogStatus.FAIL, "Element not found : "+e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch(Throwable e)
         {
-            /*test.log(LogStatus.ERROR,"There is Error : "+e);
-            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));*/
+            test.log(LogStatus.ERROR,"There is Error : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
         }
 
 
-       /* extent.endTest(test);
-        extent.flush();*/
+        extent.endTest(test);
+        extent.flush();
     }
     @DataProvider
     public Object[][] getOwnFleetData() throws IOException {
@@ -152,7 +152,7 @@ public class AddEditFleetTest {
    @Test(dataProvider="getVendorFleetData")
     public void AddEditVendorFleetTest(String fleetNo,String fleetCategory,String fleetType,
                             String selectVendorName,String expected)throws IOException{
-       // ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
+       ExtentTest test=extent.startTest("Add Fleet Test","To check functionality of save button");
         try
         {
             Menu menu=new Menu(driver);
@@ -173,35 +173,35 @@ public class AddEditFleetTest {
             Alert alert=driver.switchTo().alert();
             String actual=alert.getText();
             alert.accept();
-         //   test.log(LogStatus.INFO, "alert displayed as " + actual);
+          test.log(LogStatus.INFO, "alert displayed as " + actual);
 
             Assert.assertEquals(actual.trim(),expected.trim());
-            /*test.log(LogStatus.PASS, "Fleet Added Successfully");
+            test.log(LogStatus.PASS, "Fleet Added Successfully");
 
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch (AssertionError e)
         {
-            /*test.log(LogStatus.FAIL, e);
+            test.log(LogStatus.FAIL, e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch (NoSuchElementException e)
         {
-        /*    test.log(LogStatus.FAIL, "Element not found : "+e);
+            test.log(LogStatus.FAIL, "Element not found : "+e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-*/
+
         }
         catch(Throwable e)
         {
-           /* test.log(LogStatus.ERROR,"There is Error : "+e);
-            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));*/
+            test.log(LogStatus.ERROR,"There is Error : "+e);
+            test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
         }
 
 
-        /*extent.endTest(test);
-        extent.flush();*/
+        extent.endTest(test);
+        extent.flush();
     }
     @DataProvider
     public Object[][] getVendorFleetData() throws IOException {

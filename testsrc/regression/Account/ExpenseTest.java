@@ -41,19 +41,19 @@ public class ExpenseTest {
         driver.manage().window().maximize();
         LoginPage loginPage=new LoginPage(driver,"http://test.tfleet.in/login.aspx");
         DashBoard dashboard=loginPage.Login("akshu.pokley@gmail.com","123");
-        driver.manage().timeouts().implicitlyWait(30, SECONDS);
+        driver.manage().timeouts().implicitlyWait(60, SECONDS);
     }
 
-    @Test(dataProvider = "getExpenceData")
-    public void expenseTest(String pnrNo, String fleetNo, String expenditureType, String employeeName, String paidtoParty
-    String description,String paymentMode,String amount,String additionalInformation,String expected) throws IOException {
+    @Test(dataProvider = "getExpenseData")
+    public void expenseTest(String pnrNo, String fleetNo, String expenditureType, String employeeName, String paidtoParty,
+    String description,String paymentMode,String chqOrDDNo,String amount,String additionalInformation,String expected) throws IOException {
         ExtentTest test = extent.startTest("Test Expence page | save record", "To test the save button functionality");
 
         try {
             Menu menu = new Menu(driver);
             menu.clickAccountExpense();
-            driver.manage().timeouts().implicitlyWait(40,SECONDS);
-            Expense expense = new Expence(driver);
+            driver.manage().timeouts().implicitlyWait(60,SECONDS);
+            Expense expense = new Expense(driver);
             expense.setTxtPNRNo(pnrNo);
             expense.setSelectFleetNo(fleetNo);
             Thread.sleep(3000);
@@ -62,11 +62,13 @@ public class ExpenseTest {
             expense.setSelectEmployee(employeeName);
             Thread.sleep(3000);
             expense.setTxtpaidToParty(paidtoParty);
+            expense.setTxtDescription(description);
             expense.setSelectPaymentMode(paymentMode);
             Thread.sleep(3000);
+            expense.setTxtChequeOrDDNo(chqOrDDNo);
             expense.setTxtAmount(amount);
             expense.setTxtAdditionalInformation(additionalInformation);
-            expense.clickBtnSave();
+            expense.clickSave();
             driver.manage().timeouts().implicitlyWait(30, SECONDS);
             Alert alert = driver.switchTo().alert();
             String actual = alert.getText();
@@ -98,12 +100,12 @@ public class ExpenseTest {
 
     }
     @DataProvider
-    public Object[][] getExpenceData() throws IOException {
+    public Object[][] getExpenseData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("ExpenseData");
         int rowCount = sheet.getPhysicalNumberOfRows();
-        String[][] data = new String[rowCount - 1][9];
+        String[][] data = new String[rowCount - 1][10];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = sheet.getRow(i);
 
@@ -158,30 +160,36 @@ public class ExpenseTest {
                 paymentModeCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][6] =paymentModeCell.getStringCellValue();
             }
-            HSSFCell amountCell = row.getCell(7);
-            if (amountCell == null) {
+            HSSFCell chqOrDDNOCell = row.getCell(7);
+            if (chqOrDDNOCell == null) {
                 data[i - 1][7] = "";
             } else {
-                amountCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][7] = amountCell.getStringCellValue();
+                chqOrDDNOCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][7] =chqOrDDNOCell.getStringCellValue();
             }
-            HSSFCell additionalInformationCell = row.getCell(8);
-            if (additionalInformationCell == null) {
+            HSSFCell amountCell = row.getCell(8);
+            if (amountCell == null) {
                 data[i - 1][8] = "";
             } else {
-                additionalInformationCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][8] = additionalInformationCell.getStringCellValue();
+                amountCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][8] = amountCell.getStringCellValue();
             }
-            HSSFCell expectedCell = row.getCell(9);
+            HSSFCell additionalInformationCell = row.getCell(9);
+            if (additionalInformationCell == null) {
+                data[i - 1][9] = "";
+            } else {
+                additionalInformationCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][9] = additionalInformationCell.getStringCellValue();
+            }
+            HSSFCell expectedCell = row.getCell(10);
             if (expectedCell == null)
             {
-                data[i - 1][9] = "";
+                data[i - 1][10] = "";
             } else
             {
                 expectedCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][9] =expectedCell.getStringCellValue();
+                data[i - 1][10] =expectedCell.getStringCellValue();
             }
-
 
         }
         return data;
