@@ -91,7 +91,7 @@ public class AllowanceTest {
 
     }
     @DataProvider
-    public Object[][] getAllowanceData() throws IOException {
+    public Object[][] getAllowaneData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("AllowanceData");

@@ -46,7 +46,9 @@ public class ExpenseTest {
 
     @Test(dataProvider = "getExpenseData")
     public void expenseTest(String pnrNo, String fleetNo, String expenditureType, String employeeName, String paidtoParty,
-    String description,String paymentMode,String chqOrDDNo,String amount,String additionalInformation,String expected) throws IOException {
+                            String description,String paymentMode,String chqOrDDNo,String amount,String additionalInformation,
+                            String expected) throws IOException
+    {
         ExtentTest test = extent.startTest("Test Expence page | save record", "To test the save button functionality");
 
         try {
@@ -79,13 +81,11 @@ public class ExpenseTest {
         {
             test.log(LogStatus.FAIL, e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-
         }
         catch (NoSuchElementException e)
         {
             test.log(LogStatus.FAIL, "Element not found : "+e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
-
         }
 
         catch(Throwable e)
@@ -96,11 +96,10 @@ public class ExpenseTest {
 
         extent.endTest(test);
         extent.flush();
-
-
     }
     @DataProvider
-    public Object[][] getExpenseData() throws IOException {
+     public Object[][] getExpenseData() throws IOException
+    {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("ExpenseData");
@@ -144,7 +143,7 @@ public class ExpenseTest {
             } else
             {
                 paidToParty.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][4] =paidToParty.getStringCellValue();
+                data[i - 1][4] = paidToParty.getStringCellValue();
             }
             HSSFCell descriptionCell = row.getCell(5);
             if (descriptionCell == null) {

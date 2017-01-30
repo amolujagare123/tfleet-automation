@@ -102,10 +102,10 @@ public class ReservationTest {
 
 
             reservation.setTxtEstimateAmount(estimateAmount);
-            Thread.sleep(5000);
+
 
             reservation.setSelectBillingMode(billingMode);
-            Thread.sleep(6000);
+            Thread.sleep(3000);
 
             reservation.setTxtSpecialInstuction(specialInstruction);
 

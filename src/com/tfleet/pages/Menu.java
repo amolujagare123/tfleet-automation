@@ -356,7 +356,7 @@ public class Menu
         Expense.click();
     }
 
-    public void clickFuelConsumption()
+    public void clickAccountFuelConsumption()
     {
         Account.click();
         fuelConsumption.click();
