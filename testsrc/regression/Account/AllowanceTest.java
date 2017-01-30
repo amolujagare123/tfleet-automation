@@ -50,7 +50,7 @@ public class AllowanceTest {
 
         try {
             Menu menu = new Menu(driver);
-            menu.clickAccountAllowance();
+            menu.clickAccount_Allowance();
             driver.manage().timeouts().implicitlyWait(40,SECONDS);
             Allowance allowance = new Allowance(driver);
             allowance.setSelectAllowanceType(allowanceType);

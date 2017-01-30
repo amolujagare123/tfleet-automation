@@ -350,18 +350,18 @@ public class Menu
 
 
 
-    public void clickAccountExpense()
+    public void clickAccount_Expense()
     {
         Account.click();
         Expense.click();
     }
 
-    public void clickAccountFuelConsumption()
+    public void clickAccount_FuelConsumption()
     {
         Account.click();
         fuelConsumption.click();
     }
-    public void clickAccountAllowance()
+    public void clickAccount_Allowance()
     {
         Account.click();
         Allowance.click();

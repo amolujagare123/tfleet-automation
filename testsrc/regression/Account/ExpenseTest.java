@@ -53,7 +53,7 @@ public class ExpenseTest {
 
         try {
             Menu menu = new Menu(driver);
-            menu.clickAccountExpense();
+            menu.clickAccount_Expense();
             driver.manage().timeouts().implicitlyWait(60,SECONDS);
             Expense expense = new Expense(driver);
             expense.setTxtPNRNo(pnrNo);

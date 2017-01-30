@@ -37,22 +37,23 @@ public class FuelConsumptionTest {
     @BeforeClass
     public void init() {
         driver.manage().window().maximize();
-        LoginPage loginPage = new LoginPage(driver, "test.tfleet.in/login.aspx");
+        LoginPage loginPage = new LoginPage(driver,"http://test.tfleet.in/login.aspx");
         DashBoard dashboard = loginPage.Login("akshu.pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(30, SECONDS);
     }
 
     @Test(dataProvider = "getFuelConsumptionData")
-    public void fuelConsumptionTest(String fleetNo,String Location,String meterReading, String totalLiter, String costPerLiter,
-                                    String totalAmount,String chaufferName, String approvalManager,
-    String pnrNo,String pumpName, String Description, String Expected) throws IOException {
+    public void fuelConsumptionTest(String fleetNo, String Location, String meterReading, String totalLiter, String costPerLiter,
+                                    String totalAmount, String chaufferName, String approvalManager,
+                                    String pnrNo, String pumpName, String Description, String Expected) throws IOException {
         ExtentTest test = extent.startTest("Test Fuel Consumption Page || To save Record", "To test Save button functionality");
         try {
 
             Menu menu = new Menu(driver);
-            menu.clickAccountFuelConsumption();
+            menu.clickAccount_FuelConsumption();
             FuelConsumption fuel = new FuelConsumption(driver);
             fuel.setSelectFleetNo(fleetNo);
+
 
         } catch (AssertionError e) {
             test.log(LogStatus.FAIL, e);
@@ -71,10 +72,8 @@ public class FuelConsumptionTest {
         extent.flush();
 
     }
-
-
     @DataProvider
-    public Object[][] getReservationData() throws IOException {
+    public Object[][] getFuelConsumptionData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("Sheet1");
@@ -82,76 +81,76 @@ public class FuelConsumptionTest {
         String[][] data = new String[rowCount - 1][10];
         for (int i = 1; i < rowCount; i++) {
             HSSFRow row = sheet.getRow(i);
-
-            HSSFCell pnrNoCell = row.getCell(0);
-            if (pnrNoCell == null) {
+            HSSFCell fleetNoCell = row.getCell(0);
+            if (fleetNoCell == null) {
                 data[i - 1][0] = "";
             } else {
-                pnrNoCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][0] = pnrNoCell.getStringCellValue();
+                fleetNoCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][0] = fleetNoCell.getStringCellValue();
             }
-            HSSFCell fleetNoCell = row.getCell(1);
-            if (fleetNoCell == null) {
+            HSSFCell locationCell = row.getCell(1);
+            if (locationCell == null) {
                 data[i - 1][1] = "";
             } else {
-                fleetNoCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][1] = fleetNoCell.getStringCellValue();
+                locationCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][1] = locationCell.getStringCellValue();
             }
-            HSSFCell expenditureTypeCell = row.getCell(2);
-            if (expenditureTypeCell == null) {
+            HSSFCell meterReading = row.getCell(2);
+            if (meterReading == null) {
                 data[i - 1][2] = "";
             } else {
-                expenditureTypeCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][2] = expenditureTypeCell.getStringCellValue();
+                meterReading.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][2] = meterReading.getStringCellValue();
             }
-            HSSFCell employeeNameCell = row.getCell(3);
-            if (employeeNameCell == null) {
+            HSSFCell totalLtrCell = row.getCell(3);
+            if (totalLtrCell == null) {
                 data[i - 1][3] = "";
             } else {
-                employeeNameCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][3] = employeeNameCell.getStringCellValue();
+                totalLtrCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][3] = totalLtrCell.getStringCellValue();
             }
-            HSSFCell paidToParty = row.getCell(4);
-            if (paidToParty == null) {
+            HSSFCell costPerLitCell = row.getCell(4);
+            if (costPerLitCell == null) {
                 data[i - 1][4] = "";
             } else {
-                paidToParty.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][4] = paidToParty.getStringCellValue();
+                costPerLitCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][4] = costPerLitCell.getStringCellValue();
             }
-            HSSFCell descriptionCell = row.getCell(5);
-            if (descriptionCell == null) {
+
+            HSSFCell chauffeurCell = row.getCell(5);
+            if (chauffeurCell == null) {
                 data[i - 1][5] = "";
             } else {
-                descriptionCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][5] = descriptionCell.getStringCellValue();
+                chauffeurCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][5] = chauffeurCell.getStringCellValue();
             }
-            HSSFCell paymentModeCell = row.getCell(6);
-            if (paymentModeCell == null) {
+            HSSFCell approvalManagerCell = row.getCell(6);
+            if (approvalManagerCell == null) {
                 data[i - 1][6] = "";
             } else {
-                paymentModeCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][6] = paymentModeCell.getStringCellValue();
+                approvalManagerCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][6] = approvalManagerCell.getStringCellValue();
             }
-            HSSFCell chqOrDDNOCell = row.getCell(7);
-            if (chqOrDDNOCell == null) {
+            HSSFCell pnrNoCell = row.getCell(7);
+            if (pnrNoCell == null) {
                 data[i - 1][7] = "";
             } else {
-                chqOrDDNOCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][7] = chqOrDDNOCell.getStringCellValue();
+                pnrNoCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][7] = pnrNoCell.getStringCellValue();
             }
-            HSSFCell amountCell = row.getCell(8);
-            if (amountCell == null) {
+            HSSFCell pumpNameCell = row.getCell(8);
+            if (pumpNameCell == null) {
                 data[i - 1][8] = "";
             } else {
-                amountCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][8] = amountCell.getStringCellValue();
+                pumpNameCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][8] = pumpNameCell.getStringCellValue();
             }
-            HSSFCell additionalInformationCell = row.getCell(9);
-            if (additionalInformationCell == null) {
+            HSSFCell descriptionCell = row.getCell(9);
+            if (descriptionCell == null) {
                 data[i - 1][9] = "";
             } else {
-                additionalInformationCell.setCellType(Cell.CELL_TYPE_STRING);
-                data[i - 1][9] = additionalInformationCell.getStringCellValue();
+                descriptionCell.setCellType(Cell.CELL_TYPE_STRING);
+                data[i - 1][9] = descriptionCell.getStringCellValue();
             }
             HSSFCell expectedCell = row.getCell(10);
             if (expectedCell == null) {
@@ -160,11 +159,10 @@ public class FuelConsumptionTest {
                 expectedCell.setCellType(Cell.CELL_TYPE_STRING);
                 data[i - 1][10] = expectedCell.getStringCellValue();
             }
-
-
-            return data;
         }
+        return data;
+
     }
-
-
 }
+
+
