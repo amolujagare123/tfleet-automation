@@ -50,7 +50,9 @@ public class AllowanceTest {
 
         try {
             Menu menu = new Menu(driver);
+            driver.manage().timeouts().implicitlyWait(50,SECONDS);
             menu.clickAccount_Allowance();
+            driver.manage().timeouts().implicitlyWait(30,SECONDS);
             driver.manage().timeouts().implicitlyWait(40,SECONDS);
             Allowance allowance = new Allowance(driver);
             allowance.setSelectAllowanceType(allowanceType);
@@ -73,6 +75,7 @@ public class AllowanceTest {
 
         }
         catch (NoSuchElementException e)
+
         {
             test.log(LogStatus.FAIL, "Element not found : "+e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/"+takeScreenshot(driver)));
@@ -87,11 +90,9 @@ public class AllowanceTest {
 
         extent.endTest(test);
         extent.flush();
-
-
     }
     @DataProvider
-    public Object[][] getAllowaneData() throws IOException {
+    public Object[][] getAllowanceData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
         HSSFSheet sheet = hssfWorkbook.getSheet("AllowanceData");

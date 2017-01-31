@@ -41,13 +41,12 @@ public class ReservationTest {
         driver.manage().window().maximize();
         LoginPage loginpage = new LoginPage(driver, "http://test.tfleet.in/login.aspx");
         DashBoard dashboard = loginpage.Login("akshu.pokley@gmail.com", "123");
-        driver.manage().timeouts().implicitlyWait(30, SECONDS);
+
         driver.manage().timeouts().implicitlyWait(40, SECONDS);
 
     }
-
     @Test(dataProvider = "getReservationData")
-    public void reservationTest(String date, String companyName, String reportingAddress, String rentalCity,
+    public void reservationTest(String date,String companyName, String reportingAddress, String rentalCity,
                                 String nameOfGuest, String bookedBy, String mobileNo, String email, String otherMobNoForSMS,
                                 String fleetCategory, String fleetType, String dateOfRequirement, String selectPackage,
                                 String reportingTimeHr, String reportingTimeMin, String estimateAmount, String billingMode,

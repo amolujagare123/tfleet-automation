@@ -41,7 +41,7 @@ public class ExpenseTest {
         driver.manage().window().maximize();
         LoginPage loginPage=new LoginPage(driver,"http://test.tfleet.in/login.aspx");
         DashBoard dashboard=loginPage.Login("akshu.pokley@gmail.com","123");
-        driver.manage().timeouts().implicitlyWait(60, SECONDS);
+        driver.manage().timeouts().implicitlyWait(30, SECONDS);
     }
 
     @Test(dataProvider = "getExpenseData")
@@ -49,10 +49,11 @@ public class ExpenseTest {
                             String description,String paymentMode,String chqOrDDNo,String amount,String additionalInformation,
                             String expected) throws IOException
     {
-        ExtentTest test = extent.startTest("Test Expence page | save record", "To test the save button functionality");
+        ExtentTest test = extent.startTest("Test Expense page | save record", "To test the save button functionality");
 
         try {
             Menu menu = new Menu(driver);
+            driver.manage().timeouts().implicitlyWait(50,SECONDS);
             menu.clickAccount_Expense();
             driver.manage().timeouts().implicitlyWait(60,SECONDS);
             Expense expense = new Expense(driver);

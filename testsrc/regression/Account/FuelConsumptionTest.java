@@ -14,8 +14,10 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -41,21 +43,37 @@ public class FuelConsumptionTest {
         DashBoard dashboard = loginPage.Login("akshu.pokley@gmail.com", "123");
         driver.manage().timeouts().implicitlyWait(30, SECONDS);
     }
-
     @Test(dataProvider = "getFuelConsumptionData")
     public void fuelConsumptionTest(String fleetNo, String Location, String meterReading, String totalLiter, String costPerLiter,
-                                    String totalAmount, String chaufferName, String approvalManager,
-                                    String pnrNo, String pumpName, String Description, String Expected) throws IOException {
+                                    String chaufferName, String approvalManager,String pnrNo, String pumpName, String Description,
+                                    String Expected) throws IOException
+    {
         ExtentTest test = extent.startTest("Test Fuel Consumption Page || To save Record", "To test Save button functionality");
         try {
 
             Menu menu = new Menu(driver);
+            driver.manage().timeouts().implicitlyWait(50, SECONDS);
             menu.clickAccount_FuelConsumption();
+            driver.manage().timeouts().implicitlyWait(50, SECONDS);
             FuelConsumption fuel = new FuelConsumption(driver);
             fuel.setSelectFleetNo(fleetNo);
-
-
-        } catch (AssertionError e) {
+            fuel.setTxtLocation(Location);
+            fuel.setTxtMeterReading(meterReading);
+            fuel.setTxtTotalLiter(totalLiter);
+            fuel.setTxtCostPerLiter(costPerLiter);
+            fuel.setTxtChaufferName(chaufferName);
+            fuel.setSelectApprovalManager(approvalManager);
+            fuel.setTxtPNRNo(pnrNo);
+            fuel.setSelectPump(pumpName);
+            fuel.clickSelectPaid();
+            fuel.setTxtDescription(Description);
+            fuel.clickbtnSave();
+            Alert alert=driver.switchTo().alert();
+            String actual=alert.getText();
+            alert.accept();
+            Assert.assertEquals(actual.trim(),Expected.trim());
+        }
+        catch (AssertionError e) {
             test.log(LogStatus.FAIL, e);
             test.log(LogStatus.INFO, "Snapshot below: " + test.addScreenCapture("./screenshots/" + takeScreenshot(driver)));
 
@@ -76,7 +94,7 @@ public class FuelConsumptionTest {
     public Object[][] getFuelConsumptionData() throws IOException {
         FileInputStream fileInputStream = new FileInputStream("Excelsheet/Account.xls");
         HSSFWorkbook hssfWorkbook = new HSSFWorkbook(fileInputStream);
-        HSSFSheet sheet = hssfWorkbook.getSheet("Sheet1");
+        HSSFSheet sheet = hssfWorkbook.getSheet("FuelConsumptionData");
         int rowCount = sheet.getPhysicalNumberOfRows();
         String[][] data = new String[rowCount - 1][10];
         for (int i = 1; i < rowCount; i++) {
